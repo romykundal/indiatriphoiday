@@ -1,0 +1,80 @@
+<?php echo $this->doctype ();?>
+<!--[if IE 8]>
+<html xmlns="http://www.w3.org/1999/xhtml" class="ie8"  dir="ltr" lang="en-US">
+<![endif]-->
+<!--[if !(IE 8) ]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+<!--<![endif]-->
+<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
+<?php
+if(isset($_COOKIE['token'])){ 
+ //Auth_StaffAdapter::checkToken($_COOKIE['token']);
+}else{
+	//header ( 'Location:'.PARENT_PATH.'admin/auth' );
+}
+echo $this->headMeta ();
+echo $this->headTitle ();
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "css/back_end/style.css" );
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "css/back_end/style1.css" );
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "css/bootstrap.css" );
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "css/bootstrap.min.css" );
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "css/DT_bootstrap.css" );
+
+echo $this->headStyle ();
+echo $this->headLink ();
+$this->headScript ()->prependFile ( PUBLIC_PATH . "js/jquery-1.7.2.min.js" );
+$this->headScript ()->prependFile ( PUBLIC_PATH . "js/back_end/main-script.js" );
+//$this->headScript ()->appendFile ( PUBLIC_PATH . "js/back_end/load-scripts.js" );
+$this->headScript ()->prependFile ( PUBLIC_PATH . "js/common.js" );
+
+$this->headScript ()->appendFile ( PUBLIC_PATH . "js/bootstrap.js" );
+
+echo $this->headScript ();
+?>
+<!--[if lte IE 7]>
+<?php
+
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "/css/css/ie.css" );
+?>
+
+<![endif]--> 
+<body  class="imbull-admin js  post-php admin-bar branch-3-3 version-3-3-1 admin-color-fresh">
+<!-- start imbullwraper  -->
+	<div id="imbullwrap" >
+	<?php 
+	
+     if(Zend_Auth::getInstance()->hasIdentity()){ 
+			echo $this->render('LeftPanel.phtml');   // render left panel
+			echo $this->render('TopHeader.phtml');  // render top header
+       
+	?>
+  <div id="imbullcontent">
+			<div id="imbullbody">
+				<div style="overflow:hidden;" id="imbullbody-content">
+
+					<!-- layout content write here -->
+					<?php 
+	}
+					echo $this->layout()->content;  // render view content
+?>
+						
+					<div class="clear"></div>
+				</div>
+				<!-- imbullbody-content -->
+				<div class="clear"></div>
+			</div>
+			<!-- imbullbody -->
+			<div class="clear"></div>
+	</div>
+		<!-- imbullcontent -->
+
+		
+		<div class="fullscreen-overlay" id="fullscreen-overlay"></div>
+		<div class="fullscreen-overlay fullscreen-fader fade-600"
+			id="fullscreen-fader"></div>
+		<div class="clear"></div>
+	</div>
+	<!-- end imbullwraper  -->
+	<script type="text/javascript">if(typeof imbullOnload=='function')imbullOnload();</script>
+</body>
+</html>

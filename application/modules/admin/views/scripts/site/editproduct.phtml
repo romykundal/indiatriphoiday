@@ -1,0 +1,69 @@
+<?php
+$this->headTitle()->append($this->translate('Edit Unsafe word'));
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.dataTables.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/dataTableComman.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.ui.widget.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.iframe-transport.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-fp.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-ui.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/jquery.validate.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/editunsafeword.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/bootbox.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery-ui-1.8.16.custom.min.js");
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "/css/jquery-ui-1.8.16.custom.css" );
+?>
+<style>
+<!--
+#someID{
+	margin-left:215px;
+}
+-->
+</style>
+
+<!-- Div for add edit user list  -->
+<div id='editUserDiv' class="wrap columns-2">
+         <h1><?php  echo $this->translate('Edit Unsafe word'); ?></h1>
+         <form name=addWords method = "POST" action = '' id='addWords' enctype="multipart/form-data">
+				<div id="poststuff" class="metabox-holder has-right-sidebar">
+              <div id="post-body">
+              	<div>
+              	
+              		<div class="mainpage-content">
+                    	<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Title'); ?></strong></label></div>
+                            <div class="mainpage-content-right">
+                                <div class="mainpage-content-right-inner-right-other"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="text" maxlength="54" value = "<?php echo $this->dataWords['title']; ?>" name="Title" id="Title"  placeholder="<?php echo $this->translate('Title'); ?>" class="span3"></div>                        
+                        </div>
+                    </div>
+                                                
+                  <div class="mainpage-content-line">
+                    <div class="mainpage-content-left"><label><strong><?php  echo $this->translate('Description'); ?></strong></label></div>
+                    <div class="mainpage-content-right">
+                        <div class="mainpage-content-right-inner-right-other"></div>
+                        <div class="mainpage-content-right-inner-left-other" style="border-bottom-width: 0px; margin-bottom: 8px;">
+							<textarea class="input-xlarge mbot bbot ignore" id="maintext"  placeholder="<?php echo $this->translate('Description'); ?>" rows="3"  name="Description"  class="span3"><?php echo $this->dataWords['description']; ?></textarea>
+                    	</div>
+                    </div>
+                  </div>
+              
+                <div class="mainpage-content-colorbox">
+                <input type="hidden" name="badId" id="badId" value="<?php echo $this->id; ?>"> 
+            	<button  id="editsaveWords" type="submit" class="btn btn-large btn-primary fl"><?php echo $this->translate('UPDATE'); ?></button>
+                <a href="<?php echo HTTP_PATH; ?>admin/unsafewords"  class="fl m10"><strong><?php echo $this->translate('CANCEL'); ?></strong></a>
+              
+               <!--   <a id="deleteButton" href="javascript:void(0);"  onclick="deletehuntingregion(event);" class="fl red mt10"><strong><?php //echo $this->translate('DELETE'); ?></strong></a>-->
+            </div>
+              </div>
+              <br class="clear">
+            </div>
+          
+            
+          
+            <!-- end of panel for interesting Regions -->
+            
+          
+
+            </form>
+        </div>

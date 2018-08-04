@@ -1,0 +1,78 @@
+<?php
+$this->headTitle()->append($this->translate('Edit Advertisment'));
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.dataTables.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/dataTableComman.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.ui.widget.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.iframe-transport.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-fp.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-ui.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/jquery.validate.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/advertismentList.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/bootbox.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery-ui-1.8.16.custom.min.js");
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "/css/jquery-ui-1.8.16.custom.css" );
+?>
+<!-- Div for add edit advertisment -->
+<div id='editSpecies' class="wrap columns-2">
+         <h1><?php echo $this->translate('Advertisment'); ?>
+         </h1>
+         <form name="editSpecies" id='addRegions' method = "POST" action = '' enctype="multipart/form-data">
+		
+		       <div id="post-body">
+              	<div>
+              		<div class="mainpage-content">
+              		
+              		
+                    	<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php   echo $this->translate('Title'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text" value=" <?php echo $this->dataadvertisment['title']; ?>" maxlength="254" name="Title" id="Title" placeholder="<?php echo $this->translate('Title'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+                      
+                      
+                        
+                  <div class="clear"></div>
+                       
+                         <div class="mainpage-content-line mb10"> 
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Advertisment Picture'); ?></strong></label></div>
+                            <div class="mainpage-content-right upload">
+                          	<?php     
+                          	
+                       		$userPicture ='';
+                       		
+                          	$imgname = "";
+                      			if(isset($this->dataadvertisment['imageName']) && $this->dataadvertisment['imageName']!='')
+                       			{
+                       			if(file_exists(ROOT_PATH."images/upload/iAds/".$this->dataadvertisment['imageName']))
+                       			{		
+                          		  $userPicture = PUBLIC_PATH . 'images/upload/iAds/thum_'.$this->dataadvertisment['imageName'];
+                         		
+                         		}
+                       		}	
+                      		?>
+                             <img src ="<?php echo $userPicture; ?>" alt = "user Image" >
+                            <span class="ml15 img-name"title="<?php echo $userPicture; ?>"  id="avtarName"></span>
+                             <div class="mainpage-content-right-inner-right-other upload">
+                                	<span  class="ml15 img-name" id="avtarNameNew" ></span>
+                                </div><div class="mainpage-content-right-inner-left-other"><br>
+                                <input  class="span3 ignore" type="file" name="imageName" onchange="checkFileType(event)" >
+                               </div> </div>
+                      
+                   </div>
+                    <div class="mainpage-content-colorbox">
+            	<button  id="saveRegion" type="submit" class="btn btn-large btn-primary fl"><?php echo $this->translate('UPDATE Advertisment'); ?></button>
+                <a href="<?php echo HTTP_PATH; ?>admin/advertisment"  class="fl m10"><strong><?php echo $this->translate('CANCEL'); ?></strong></a>
+              
+              
+            </div>  
+            
+            
+           
+            <!-- /poststuff -->
+            </form>
+        </div>

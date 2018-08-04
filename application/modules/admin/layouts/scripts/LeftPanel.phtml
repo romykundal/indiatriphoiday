@@ -1,0 +1,79 @@
+<?php 
+$sessionNamespace = new Zend_Session_Namespace();
+$controller = $this->controllerName;
+$action = $this->action;
+$logoname = "cPanel";
+?>
+<style>
+
+.logostyle{
+	height: 75px;
+    margin:  35px 0 0 0;
+    width: 215px;
+    font-size: 24px;
+	font-weight:normal;
+	color:#278096;
+	letter-spacing:1pt;
+	word-spacing:2pt;
+	text-align:center;
+	font-family:lucida sans unicode, lucida grande, sans-serif;
+	line-height:1;
+	font-weight: bold;
+}
+
+</style>
+<div id="adminmenuback"></div>
+	<div id="adminmenuwrap">
+    	<div class="logo logostyle" >
+    		<a href="<?php echo HTTP_PATH?>admin">
+   			<?php echo $logoname; ?>
+  			<!--  <img src="<?php //echo PUBLIC_PATH;?>images/back_end/imbull-login-logo.jpg" border="0" width="210" height="112" /> -->
+    		</a>
+    	</div>
+		<div class="admin-sidebar-headings"><h2><?php echo $this->translate('Administration');?></h2></div>
+    	<ul id="adminmenu" role="navigation">
+        	<li  <?php if($controller == 'useradmin' && $action == 'profile') {?>class="imbull-has-submenu  menu-top menu-icon-profile imbull-has-current-submenu current"<?php } else { ?>class="imbull-has-submenu imbull-not-current-submenu menu-top menu-icon-profile" <?php }?>id="menu-links">
+        		<div class="imbull-menu-image"><a href="<?php echo HTTP_PATH;?>admin/user/profile"><br></a></div>
+        		<div class="">
+          		<div></div>
+        		</div>
+        		<a href="<?php echo HTTP_PATH;?>admin/useradmin/profile" class="imbull-has-submenu imbull-not-current-submenu menu-top menu-icon-profile" ><?php echo $this->translate('Account Setting');?></a>
+			</li>
+			<li  class="imbull-has-submenu imbull-not-current-submenu menu-top menu-icon-profile" id="menu-links">
+        		<div class="">
+          		<div></div>
+        		</div>
+        		<!-- <a href="" class="imbull-has-submenu imbull-not-current-submenu menu-top menu-icon-profile" target="_blank" >e-Mail</a> -->
+			</li>
+		</ul>
+  
+        <div class="admin-sidebar-headings"><h2><?php echo $this->translate('Managment');?></h2></div>
+        <ul id="adminmenu" role="navigation">
+        		
+        		<li 
+       			<?php if($controller == 'page') { ?>
+         	 		class="imbull-has-submenu  imbull-has-current-submenu imbull-menu-open menu-top menu-icon-visitor"
+       			<?php  }else {?>
+       				class="imbull-has-submenu  imbull-not-current-submenu imbull-menu-open menu-top menu-icon-visitor"
+       			<?php }?>
+      			id="menu-media">
+        			<div class="imbull-menu-image"><a href="<?php echo HTTP_PATH?>admin/page/"><br></a></div>
+        			<div class="">
+          				<div></div>
+        			</div>
+        			<a href="<?php echo HTTP_PATH?>admin/page" class="imbull-has-submenu imbull-has-current-submenu imbull-menu-open menu-top menu-icon-widgets" tabindex="1"><?php echo $this->translate('CMS pages');?></a>
+				</li>
+		           
+        <li class="imbull-has-submenu imbull-not-current-submenu menu-top menu-icon-home" id="menu-links">
+              <div class="imbull-menu-image"><a href="javascript:;"><br></a></div>
+              <div class="">
+                  <div></div>
+              </div>
+              <a href="<?php echo HTTP_PATH?>admin/products" class="imbull-has-submenu imbull-not-current-submenu menu-top menu-icon-home" ><?php echo $this->translate('Products');?> 
+              </a>
+          </li>
+
+      		 
+		</ul>
+			
+  	</div>

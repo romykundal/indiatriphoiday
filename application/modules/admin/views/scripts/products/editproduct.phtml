@@ -1,0 +1,133 @@
+<?php
+$this->headTitle()->append($this->translate('Edit Product'));
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.dataTables.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/dataTableComman.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.ui.widget.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.iframe-transport.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-fp.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-ui.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/jquery.validate.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/productsList.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/bootbox.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery-ui-1.8.16.custom.min.js");
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "/css/jquery-ui-1.8.16.custom.css" );
+?>
+<style>
+<!--
+#someID{
+	margin-left:215px;
+}
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+
+var MaxImage = 5-<?php echo count($this->imgprodct) ?>;
+
+//-->
+</script>
+
+<!-- Div for add edit user list  -->
+<div id='editUserDiv' class="wrap columns-2">
+         <h1><?php  echo $this->translate('Edit product'); ?>
+          <input type="button"  Value='<?php echo $this->translate('Cancel'); ?>' name='addNew' class="btn ml10" onClick="window.location.href='<?php echo HTTP_PATH; ?>admin/products'" />
+          </h1>
+         <form name="addProduct" id='addProduct' method='POST' action='' enctype="multipart/form-data">
+	
+	<div id='addNewUserDivInner' class="metabox-holder has-right-sidebar">
+	<div id="post-body">
+       <div>
+	         <div class="mainpage-content">
+					
+	                <div class="mainpage-content-line">
+	                    <div class="mainpage-content-left"><strong><?php echo $this->translate('Categories'); ?></strong></div>
+	                    <div class="mainpage-content-right">
+	                                <div class="mainpage-content-right-inner-right-other"></div>
+	                                <div class="mainpage-content-right-inner-left-other">
+	                                
+	 
+					
+                    <select name="category" class="combobox" id="category">
+                        <option value="">Select one</option>
+                        <?php 
+                                foreach ($this->catg as $key => $value) {
+                                    
+                              ?>
+            <option <?php if( $this->productdata["category"] == $value["id"] ) { echo "selected"; } ?> value="<?php echo $value["id"]; ?>"><?php echo $value["name"]; ?></option>
+                        <?php     
+                             
+                         }
+                            ?>
+                    </select>
+
+                     </div>
+                     </div>
+	                </div>
+
+				
+						<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Title'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text"  maxlength="54" name="Title" id="Title" value="<?php echo $this->productdata["title"] ; ?>" placeholder="<?php echo $this->translate('Title'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+                        
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Price'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text"  maxlength="54" name="Price" id="Price" value="<?php echo $this->productdata["price"] ; ?>" placeholder="<?php echo $this->translate('Price'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+
+					<div class="mainpage-content-line">
+                    	<div class="mainpage-content-left"><label><strong><?php  echo $this->translate('Description'); ?></strong></label></div>
+                    	<div class="mainpage-content-right">
+                        <div class="mainpage-content-right-inner-right-other"></div>
+                        <div class="mainpage-content-right-inner-left-other" style="border-bottom-width: 0px; margin-bottom: 10px;" >
+							<textarea class="input-xlarge mbot bbot ignore" id="Description" placeholder="<?php echo $this->translate('Description'); ?>" name="Description"  rows="3" ><?php echo $this->productdata["description"] ; ?></textarea>
+                    	</div>
+                    	</div>
+                    </div>
+ 
+ 					<div class="mainpage-content-line">
+                    	<div class="mainpage-content-left"><label><strong><?php  echo $this->translate('Upload product images'); ?></strong></label></div>
+                    	<div class="mainpage-content-right">
+                    	
+                           <img src ="<?php echo $this->imgprodct; ?>" alt = "Product Image" >
+                        
+                        <div class="mainpage-content-right-inner-right-other"></div>
+                        <div class="mainpage-content-right-inner-left-other" style="border-bottom-width: 0px; margin-bottom: 10px;" >
+					 <div id = "divFile">
+						<input type="file" id="image[]" name = "image[]" style="margin-top:3px;margin-bottom:10px;">  
+						<!-- <a href="javascript:;" onclick="AddFile()" id="uploadMoreImages" style="left:3px;position:relative;" >
+						<img src="<?php echo PUBLIC_PATH; ?>images/add_to_playlist.png" alt="upload more" title="upload more" ></a> -->
+			 		</div>
+                    	</div>
+                    	</div>
+                    </div>
+ 
+                  
+                  			
+                  
+                  
+			<div class="clear"></div>
+		
+            <div class="mainpage-content-colorbox">
+            	<input type="hidden" name="contr" id="editcontr" value="update">
+            	<button id='saveProducts'  type="submit" class="btn btn-large btn-primary fl" ><?php echo $this->translate('Save'); ?></button>
+				<a href="<?php echo HTTP_PATH; ?>admin/products/index"  class="fl m10"><strong><?php echo $this->translate('CANCEL'); ?></strong></a>
+           
+            </div>
+      
+            
+            </form>
+ 
+        </div>

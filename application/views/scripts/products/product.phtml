@@ -1,0 +1,68 @@
+     
+<div id="main-content" class="site-main clearfix">
+    <div id="content-wrap">
+        <div id="site-content" class="site-content clearfix">
+            <div id="inner-content" class="inner-content-wrap">
+                <div class="page-content">
+                  
+                       <!-- WORKS -->
+                    <section id="destinations-section" class="wprt-section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="wprt-spacer" data-desktop="70" data-mobi="60" data-smobi="60"></div>
+                                        &nbsp;&nbsp;&nbsp;
+
+                                    <div class="wprt-spacer" data-desktop="43" data-mobi="30" data-smobi="30"></div>
+                                </div><!-- /.col-md-12 -->
+                            </div><!-- /.row -->
+                        <div class="destinations">
+           <div class="row">
+           <?php foreach ($this->hotProducts as $key => $value) { ?>
+            <div class="col-sm-4">
+                <div class="project-item">
+                            <div class="inner">
+                                <figure class="effect-honey">
+                                    <img height="278" width="370" src="<?php echo PUBLIC_PATH; ?>images/upload/products/medium/thum_medium_<?php echo $value["image"] ; ?>" alt="image" />
+                                    <figcaption>
+                                        <div>
+                                        <h2><a href="#"><?php echo ucfirst($value["title"]) ; ?></a></h2>
+                                        
+                                        </div>
+                                    </figcaption>           
+                                </figure>
+                                <div class="project-detail">
+                                <div class="row">
+                                    <div class="col-xs-7">
+                                        <p><i class="fa fa-sun-o"></i> <?php echo ucfirst($value["description"]) ; ?></p>
+                                        <p class="price"><strong>₹ <?php echo $value["price"] ; ?></strong></p>
+                                    </div>
+                                    <div class="col-xs-5"><div class="text-center"><a href="<?php echo HTTP_PATH.'index/booknow' ; ?>" class="wprt-button rounded-3px book-btn">Book Now</a></div>
+                                    </div>
+                                </div>
+                                </div><!--/.project-detail -->
+                            </div>
+                        </div><!-- .project-item -->   
+            </div><!--. col-sm-4 -->
+            <?php } ?>
+             
+           </div><!--/.row -->
+<?php if(count($this->hotProducts) == 0){ ?>
+    <div class="alert alert-danger" role="alert">
+      Record Not Found
+    </div>
+<?php } ?>
+                       
+                        </div>
+                        </div><!-- /.container -->
+            
+                      
+                    </section>
+                    
+ <!-- End Product Area -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>        

@@ -1,0 +1,80 @@
+<?php
+$this->headTitle()->append($this->translate('Sites'));
+
+$this->headScript()->appendFile(PUBLIC_PATH . "js/jquery.dataTables.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/dataTableComman.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/jquery.ui.widget.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/jquery.iframe-transport.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/jquery.fileupload.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/jquery.fileupload-fp.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/jquery.fileupload-ui.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/back_end/jquery.validate.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/common.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/back_end/sites.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/back_end/bootbox.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/jquery-ui-1.8.16.custom.min.js");
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "css/jquery-ui-1.8.16.custom.css" );
+?>
+<!-- <script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script> -->
+ <style>
+
+ <style>
+
+div.dataTables_wrapper table tbody tr td
+	{
+	padding-bottom: 15px; 
+	}
+	
+div#wordsListTable_filter
+{
+	display : none;
+}
+</style>
+<!-- Div for user list  -->
+
+<div class='wrap columns-2' id='regionListDiv'>
+<?php if($this->messageSuccess!='' || $this->messageError!='' ){?>
+<br><div class ="mainpage-content-colorbox success" id="removemsg">
+<?php if($this->messageSuccess!=''){?>
+<span class="successserver"><?php echo $this->messageSuccess; ?></span>
+<?php }?>
+<?php if($this->messageError!=''){?>
+<span class="errorserver"><?php echo $this->messageError; ?></span>
+<?php } ?>
+</div>
+<?php }?>
+<h1 class="fl"><?php echo $this->translate('Manage Sites Worked On');?></h1>
+
+	<input type="button"  onClick="window.location.href='<?php echo HTTP_PATH; ?>admin/site/addsites'" Value='Add Sites Worked On'  name='addNew'  class="btn ml10" style="margin-bottom: -39px;" />
+          	<div class="clear"></div>
+          
+          <div class="mainpage-content-colorbox">
+                
+                <form class="form-search" name="searchForm" onsubmit="return false;">
+			      <div class="fl">                   
+                         <input type="text" id='searchProduct' name='searchProduct' placeholder="Search Sites" class="span5">
+                        <button onclick="javascript:getsiteList(searchProduct.value)" class="btn btn-primary">Search</button>
+                    </div>             	
+                    <!--<div class="fl ml15 fillterDiv"> 
+                      <select id='selectRole'>
+                      </select>
+                    </div> -->                         
+                </form>
+            
+            </div>  
+            
+		<table id="productListTable" class="table table-bordered table-striped">
+			<thead>
+	            <tr>
+	             
+	                <th>Address</th>
+	                <th>Longitude</th>
+	                <th>Latitude</th>
+	                <th>Delete</th>
+	               
+	            </tr>
+	        </thead>
+	    </table>
+</div><!-- End code of list users -->
+

@@ -1,0 +1,83 @@
+<?php
+$this->headTitle()->append($this->translate('Add New Pictures'));
+
+{
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.dataTables.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/dataTableComman.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.ui.widget.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.iframe-transport.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-fp.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-ui.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/jquery.validate.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/sites.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/bootbox.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery-ui-1.8.16.custom.min.js");
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "/css/jquery-ui-1.8.16.custom.css" );
+?>
+
+<style>
+<!--
+#someID{
+	margin-left:215px;
+}
+-->
+</style>
+
+<!-- Div for add new user list  -->
+<div id='addNewregionDiv' class='wrap columns-2'>
+<form name="addSite" id='addSite' method='POST' action='<?php echo HTTP_PATH; ?>admin/site/addsites' enctype="multipart/form-data">
+	<h1><?php echo $this->translate('Add New Worked Site'); ?></h1>
+	
+	<div id='addNewUserDivInner' class="metabox-holder has-right-sidebar">
+		<div id="post-body">
+       		<div>
+         		<div class="mainpage-content">
+         			
+					<div id = "divFile">
+						
+						<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Address'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <textarea  name="address" id="address" placeholder="Address" class="span3"></textarea>
+                                </div>                        
+                            </div>
+                        </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong>Longitude</strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text"  maxlength="54" name="longitude" id="longitude" placeholder="Longitude" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong>Latitude</strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text"  maxlength="54" name="latitude" id="latitude" placeholder="Latitude" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+			 		</div>
+                  
+					<div class="clear"></div>
+            		<div class="mainpage-content-colorbox">
+            			<input type="hidden" name="contr" id="editcontr" value="update">
+            			<button id='saveProducts'  type="submit" class="btn btn-large btn-primary fl" ><?php echo $this->translate('Save'); ?></button>
+						<a href="<?php echo HTTP_PATH; ?>admin/site/"  class="fl m10"><strong><?php echo $this->translate('CANCEL'); ?></strong></a>
+           
+            		</div>
+      			</div>
+      		</div>
+      	</div>
+     </div>	
+</form>
+</div>
+        
+ <?php }?>
+ 

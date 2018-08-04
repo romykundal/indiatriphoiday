@@ -1,0 +1,165 @@
+<?php
+
+$this->headScript ()->appendFile ( "http://ajax.microsoft.com/ajax/jQuery/jquery-1.9.1.min.js" );
+
+//$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "css/front_end/style_1/style.css" );
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "css/front_end/gallery/supersized.css" );
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "js/front_end/gallery/theme/supersized.shutter.css" );
+
+$this->headScript ()->appendFile ( PUBLIC_PATH . "js/front_end/gallery/jquery.easing.min.js" );
+$this->headScript ()->appendFile ( PUBLIC_PATH . "js/front_end/gallery/supersized.3.2.7.js" );
+$this->headScript ()->appendFile ( PUBLIC_PATH . "js/front_end/gallery/theme/supersized.shutter.min.js" );
+$this->headScript ()->appendFile ( PUBLIC_PATH . "js/front_end/gallery/jquery.elevatezoom.js" );
+
+echo $this->headStyle ();
+echo $this->headScript ();
+
+$imagesArray = $this->imagesArray;
+?>
+<style type="text/css">
+ul#demo-block{ margin:0 15px 15px 15px; }
+ul#demo-block li{ margin:0 0 10px 0; padding:10px; display:inline; float:left; clear:both; color:#aaa; background:url('<?php echo PUBLIC_PATH; ?>img/bg-black.png'); font:11px Helvetica, Arial, sans-serif; }
+ul#demo-block li a{ color:#eee; font-weight:bold; }
+
+
+#crousel-cont {
+	margin: auto;
+	overflow: hidden;
+	width: 900px !important;
+}
+
+
+#crousel-cont .sub-cont{
+
+	height: 600px !important;
+	margin: auto;
+	overflow: hidden;
+	position: relative;
+	width: 900px !important;
+}
+#supersized, 
+#supersized  li ,
+#controls-wrapper,
+#progress-back,
+#thumb-tray
+{
+	position: absolute;
+
+}
+
+
+</style>
+<script type="text/javascript">
+var imgArray = <?php echo $imagesArray; ?>			
+jQuery(function($){
+
+	$.supersized({
+
+					// Functionality
+					slideshow               :   1,			// Slideshow on/off
+					autoplay				:	1,			// Slideshow starts playing automatically
+					start_slide             :   1,			// Start slide (0 is random)
+					stop_loop				:	0,			// Pauses slideshow on last slide
+					random					: 	0,			// Randomize slide order (Ignores start slide)
+					slide_interval          :   3000,		// Length between transitions
+					transition              :   6, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
+					transition_speed		:	1000,		// Speed of transition
+					new_window				:	1,			// Image links open in new window/tab
+					pause_hover             :   0,			// Pause slideshow on hover
+					keyboard_nav            :   1,			// Keyboard navigation on/off
+					performance				:	1,			// 0-Normal, 1-Hybrid speed/quality, 2-Optimizes image quality, 3-Optimizes transition speed // (Only works for Firefox/IE, not Webkit)
+					image_protect			:	1,			// Disables image dragging and right click with Javascript
+
+					// Size & Position						   
+					min_width		        :   800,			// Min width allowed (in pixels)
+					min_height		        :   600,			// Min height allowed (in pixels)
+					vertical_center         :   1,			// Vertically center background
+					horizontal_center       :   1,			// Horizontally center background
+					fit_always				:	0,			// Image will never exceed browser width or height (Ignores min. dimensions)
+					fit_portrait         	:   1,			// Portrait images will not exceed browser height
+					fit_landscape			:   0,			// Landscape images will not exceed browser width
+
+					// Components							
+					slide_links				:	'blank',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
+					thumb_links				:	1,			// Individual thumb links for each slide
+					thumbnail_navigation    :   0,			// Thumbnail navigation
+					slides 					:  	imgArray,
+
+					// Theme Options			   
+					progress_bar			:	1,			// Timer for each slide							
+					mouse_scrub				:	0
+					
+				});
+
+//$(".thumb img").elevateZoom({
+	//scrollZoom : true
+//});
+});
+
+</script>
+
+<?php 
+if(!empty($this->imagesArray)):
+	?>
+<div id="content-body">
+	<div class="content-body-container" style="float:left; width:900px; display:block;">
+		<div id="crousel-cont">
+			<div class="sub-cont">
+				<div id="supersized-loader"></div>
+				<ul id="supersized"></ul>
+
+				<!--End of styles-->
+
+				<!--Thumbnail Navigation-->
+				<div id="prevthumb"></div>
+				<div id="nextthumb"></div>
+
+				<!--Arrow Navigation-->
+				<a id="prevslide" class="load-item"></a>
+				<a id="nextslide" class="load-item"></a>
+				
+				<div id="thumb-tray" class="load-item">
+					<div id="thumb-back"></div>
+					<div id="thumb-forward"></div>
+				</div>
+
+				<!--Time Bar-->
+				<div id="progress-back" class="load-item">
+					<div id="progress-bar"></div>
+				</div>
+
+				<!--Control Bar-->
+				<div id="controls-wrapper" class="load-item">
+					<a id="play-button"><img id="pauseplay" src="<?php echo PUBLIC_PATH; ?>images/front_end/gallery/pause.png"/></a>
+					<!--Slide counter-->
+					<div id="slidecounter">
+						<span class="slidenumber"></span> / <span class="totalslides"></span>
+					</div>
+					<a id="tray-button"><img id="tray-arrow" src="<?php echo PUBLIC_PATH; ?>images/front_end/gallery/button-tray-up.png"/></a>
+					<!--Navigation-->
+					<ul id="slide-list"></ul>
+				</div>
+			</div>
+			<!--Slide captions displayed here-->
+			<div id="slidecaption"></div>
+		</div>
+		<div class="clr"></div>
+
+
+
+
+
+	</div>
+
+	<?php
+	else:
+		?>
+	<div id="content-body">
+		<div class="gallery-outer">
+			<h1><strong>NO PICTURE FOUND!!</strong></h1>
+		</div>
+	</div> 
+	<div class="clr"></div>
+	<?php 
+	endif;
+	?>

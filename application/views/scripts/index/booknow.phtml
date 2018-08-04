@@ -1,0 +1,192 @@
+
+<?php 
+      $this->headLink ()->appendStylesheet ( PUBLIC_PATH . "js/front_end/vendor/jquery-ui.css" );
+      $this->headScript ()->prependFile ( PUBLIC_PATH . "js/front_end/vendor/jquery-ui.js" );
+
+?>
+
+
+<?php $this->headScript ()->prependFile ( PUBLIC_PATH . "js/front_end/booking.js" ); ?>
+<!-- Start Main Content -->
+
+
+<div id="main-content" class="site-main clearfix">
+    <div id="content-wrap">
+        <div id="site-content" class="site-content clearfix">
+            <div id="inner-content" class="inner-content-wrap">
+                <div class="page-content">
+                    <!-- GALLERY -->
+<div class='wrap columns-2' id='pageList'>
+    <?php if($this->messageSuccess!='' || $this->messageError!='' ){?>
+    <br><div class ="mainpage-content-colorbox success">
+    <?php if($this->messageSuccess!=''){ ?>
+   <div class="alert alert-success" role="alert"><?php echo $this->messageSuccess; ?></div>
+    <?php }?>
+    <?php if($this->messageError!=''){?>
+    <div class="alert alert-danger" role="alert"><?php echo $this->messageError; ?></div>
+    <?php } ?>
+    </div>
+    <?php } ?> 
+</div>   
+            <section class="wprt-section">
+                <div class="container">
+                    <div class="row">
+                       <div class="col-md-12">
+                              <div class="wprt-spacer" data-desktop="40" data-mobi="60" data-smobi="60" style="height:40px"></div>
+                          </div><!-- /.col-md-12 -->
+
+          <div class="col-md-8">
+    <form autocomplete="off" validate action="/index/booking" method="POST" id="booking" name="booking">
+
+
+    <div class="widget contactForm">  
+     
+    <div class="clear">&nbsp;</div>
+    <div class="clear">&nbsp;</div>
+      
+    </div>
+    <div class="single-input">
+        <label for="fromLocation">Travel Type</label>
+          <select name="travelType" id="travelType">
+            <?php foreach ($this->category as $key => $value) { ?>
+            <option value="<?php echo $value["name"] ?>"><?php echo $value["name"] ?></option>
+            <?php } ?>
+            option
+          </select>
+
+        
+      </div>
+
+      <div class="single-input">
+        <label for="fromLocation">Departure Station/City</label>
+          <input type="text" id="departure" name="departure" aria-describedby="emailHelp" placeholder="e.g. New York" required>
+        
+      </div>
+        <div class="single-input">
+        <label for="toLocation">Arrival Station/City</label>
+          <input type="text" id="arrival" name="arrival" aria-describedby="emailHelp" placeholder="e.g Albama">
+          
+      </div>    
+      <div class="single-input">
+      
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="departDate">Depart Date</label>
+            <input type="date" id="departureDate" name="departureDate" aria-describedby="emailHelp" placeholder="" required>
+        </div>
+
+        <div class="col-sm-6">
+          <label for="returnDate">Return Date</label>
+            <input type="date" id="returnDate" name="returnDate" aria-describedby="emailHelp" placeholder="" required>
+        </div>
+      </div>
+
+      </div>
+      <div class="single-input">
+        
+        <div class="row">
+        <div class="col-sm-4">
+          <label for="adult">Adult</label>
+            <input type="number" id="adult" name="adult" aria-describedby="emailHelp" placeholder="" required>
+        </div>
+
+        <div class="col-sm-4">
+          <label for="child">Child</label>
+            <input type="number" id="child" name="child" aria-describedby="emailHelp" placeholder="">
+        </div >
+
+        <div class="col-sm-4">
+          <label for="infant">Infant</label>
+            <input type="number" id="infant" name="infant" aria-describedby="emailHelp" placeholder="">
+        </div>
+      </div>
+
+      </div>
+
+      <h3 class="sidebar-title req mt-5">Perosnal Info</h3> 
+
+      <div class="single-input">
+      <label for="firstName">Sex</label>
+          <select class="form-control" name="gender" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+      </div>
+
+      <div class="single-input">
+      <label for="firstName">First Name</label>
+          <input type="text" id="firstName"  name="firstName" aria-describedby="firstNameHelp" placeholder="First name" required>
+      </div>
+      <div class="single-input">
+      <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" aria-describedby="lastNameHelp" placeholder="Last Name" required>
+      </div>
+
+      <div class="single-input">
+      <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" aria-describedby="emailHelp" placeholder="email@example.com" required>
+      </div>
+
+      <div class="single-input">
+      <label for="phoneNumber">Mobile Number</label>
+          <input type="number" id="phoneNumber" name="phoneNumber" aria-describedby="phoneNumberHelp" placeholder="+91-000-000-0000" required>
+      </div>              
+            <div class="single-input">
+              <label for="address">Address</label>
+        <textarea  id="address" name="address" aria-describedby="addressHelp" placeholder="Address" required></textarea>
+      </div>
+
+      <div class="single-input">
+        
+        <div class="row">
+        
+       <!--  <div class="col-sm-6">
+          <label for="city">City</label>
+            <input required type="text" id="city" name="city" aria-describedby="cityHelp" placeholder="">
+        </div>
+
+        <div class="col-sm-3">
+          <label for="state">State</label>
+            <input type="text" required id="state" name="state" aria-describedby="stateHelp" placeholder="">
+        </div> -->
+
+        <div class="col-sm-3">
+          <label for="infant">Zip</label>
+            <input required type="number" id="zipcode" name="zipcode" aria-describedby="emailHelp" placeholder="">
+        </div>
+      </div>
+
+      </div>
+
+      <div class="d-flex justify-content-start single-button">
+        <button type="submit" class=" primary-btn d-inline-flex text-uppercase align-items-center">Book Now<span class="lnr lnr-arrow-right"></span></button>
+      </div>              
+  
+ </div><!-- /.col-md-8 -->
+
+                                <div class="col-md-4">
+                                <div class="side-bar">
+                                  <h2 class="line-height-normal margin-bottom-10">TOP Story</h2>
+                                  <div class="wprt-lines style-1 custom-3">
+                                        <div class="line-1"></div>
+                                        <div class="line-2"></div>
+                                    </div>
+<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FIndiatripholidaycom-167430244036097%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+
+                                </div><!--side-bar-->
+                                </div><!-- /.col-md-4 -->
+
+                                <div class="col-md-12">
+                                    <div class="wprt-spacer" data-desktop="80" data-mobi="60" data-smobi="60" style="height:80px"></div>
+                                </div>
+                            </div><!-- /.row -->
+                        </div><!-- /.container -->
+                  </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="<?php echo PUBLIC_PATH.'js/front_end/' ; ?>bootstrap-select.min.js"></script>

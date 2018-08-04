@@ -1,0 +1,90 @@
+
+
+<div id="content-body">
+	<div class="category">
+    	
+     	
+    </div>
+	<div class="clear"></div>
+</div>
+
+
+
+        <!-- Start Main Content -->
+        <div class="main-content">
+        <div class="container">
+        <div class="row">
+        <div class="col-md-8">
+        
+       <h1>Welcome <strong style="color: #8764A4; font-weight: bold;"><?php echo ucfirst($this->username); ?> </strong></h1> 
+
+<div class="row">
+                 <?php foreach ($this->hotProducts as $key => $value) { ?>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="single-product">
+                        <img src="<?php echo PUBLIC_PATH; ?>images/upload/products/medium/thum_medium_<?php echo $value["image"] ; ?>" />
+                            <div class="icon">
+
+                            </div>
+                            <div class="desc">
+                                <h4><?php echo $value["title"] ; ?></h4>
+                                <p><?php echo $value["description"] ; ?> </p>
+                                <h5> Rs.<?php echo $value["price"] ; ?><span><a href="<?php echo HTTP_PATH.'index/booknow' ; ?>" class="primary-btn d-inline-flex align-items-center">BOOK NOW</a></span></h5>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>    
+                   
+                </div>
+
+
+        </div>
+        
+        <div class="col-md-4">
+        <div class="sidebar">
+        <div class="widget">    
+        <h3 class="sidebar-title">My Account</h3>      
+        <div id="nt-container">
+        
+        <ul id="accountul">
+            <li>
+                <a href="<?php echo HTTP_PATH.'userprofile/orders' ; ?>">
+                <div class="news-item">
+                    <div class="news-text">
+                        <h4>My Orders</h4>
+                    </div>
+                </div><!-- News Item -->
+            </a>
+            </li>
+
+            <li>
+                <a href="<?php echo HTTP_PATH.'userprofile/profilesetting' ; ?>">
+                <div class="news-item">
+                    <div class="news-text">
+                        <h4>My Account info</h4>
+                    </div>
+                </div><!-- News Item -->
+            </a>
+            </li>
+
+            <li>
+                <a href="<?php echo HTTP_PATH.'user/logout' ; ?>">
+                <div class="news-item">
+                    <div class="news-text">
+                        <h4>Logout</h4>
+                    </div>
+                </div><!-- News Item -->
+            </a>
+            </li>
+            
+        </ul>
+       
+    </div>
+    </div>
+
+    </div><!-- .sidebar -->
+    </div><!-- .col-sm-4 -->
+
+    </div>
+    </div>
+    </div>

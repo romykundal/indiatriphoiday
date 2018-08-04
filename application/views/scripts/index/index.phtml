@@ -1,0 +1,128 @@
+<?php
+
+if(Zend_Auth::getInstance()->hasIdentity()){
+    $link = HTTP_PATH.'index/booknow' ;                                 
+}else{
+    $link = HTTP_PATH.'user/login' ;
+}
+
+?>
+
+<!-- Main Content -->
+<div id="main-content" class="site-main clearfix">
+    <div id="content-wrap">
+        <div id="site-content" class="site-content clearfix">
+            <div id="inner-content" class="inner-content-wrap">
+                <div class="page-content">
+
+                    <!-- Promotion -->
+                    <section class="wprt-section promotion">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="wprt-spacer" data-desktop="8" data-mobi="8" data-smobi="8"></div>
+                                    <h2 class="text-white text-center-mobile font-size-20 margin-bottom-0">Travel & Holiday Planner</h2>
+                                    <div class="wprt-spacer" data-desktop="0" data-mobi="20" data-smobi="20"></div>
+                                </div><!-- /.col-md-8 -->
+
+                                <div class="col-md-4">
+                                    <div class="text-right text-center-mobile"><a href="<?php echo HTTP_PATH.'index/contact' ; ?>" class="wprt-button white rounded-3px">Connect to us</a></div>
+                                    <div class="wprt-spacer" data-desktop="0" data-mobi="15" data-smobi="15"></div>
+                                </div><!-- /.col-md-4 -->
+
+                            </div><!-- /.row -->
+                        </div><!-- /.container -->
+                    </section>
+                    
+                      <!-- WORKS -->
+                    <section id="destinations-section" class="wprt-section services-2">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="wprt-spacer" data-desktop="70" data-mobi="60" data-smobi="60"></div>
+
+                                    <h2 class="text-center margin-bottom-10">TOP DESTINATIONS</h2>
+                                    <div class="wprt-lines style-2 custom-1">
+                                        <div class="line-1"></div>
+                                    </div>
+
+                                    <div class="wprt-spacer" data-desktop="43" data-mobi="30" data-smobi="30"></div>
+                                </div><!-- /.col-md-12 -->
+                            </div><!-- /.row -->
+                        <div class="destinations">
+           <div class="row">
+           <?php foreach ($this->topProducts as $key => $value) { ?>
+            <div class="col-sm-4">
+                <div class="project-item">
+                            <div class="inner">
+                                <figure class="effect-honey">
+                                    <img height="278" width="370" src="<?php echo PUBLIC_PATH; ?>images/upload/products/medium/thum_medium_<?php echo $value["image"] ; ?>" alt="image" />
+                                    <figcaption>
+                                        <div>
+                                        <h2><a href="<?php echo HTTP_PATH.'products/showproduct/p/'. $value["id"] ; ?>"><?php echo $value["title"] ; ?></a></h2>
+                                        
+                                        </div>
+                                    </figcaption>           
+                                </figure>
+                                <div class="project-detail">
+                                <div class="row">
+                                    <div class="col-xs-7">
+                                        <!-- <p><i class="fa fa-sun-o"></i> <?php //echo $value["description"] ; ?></p> -->
+                                        <p class="price">
+                                        <a href="<?php echo HTTP_PATH.'products/showproduct/p/'. $value["id"] ; ?>">
+                                        <strong>₹ <?php echo $value["price"] ; ?></strong>
+                                        </a>
+                                        </p>
+
+                                    </div>
+                                    <div class="col-xs-5"><div class="text-center"><a href="<?php echo HTTP_PATH.'index/booknow' ; ?>" class="wprt-button rounded-3px book-btn">Book Now</a></div>
+                                    </div>
+                                </div>
+                                </div><!--/.project-detail -->
+                            </div>
+                        </div><!-- .project-item -->   
+            </div><!--. col-sm-4 -->
+            <?php } ?>
+             
+           </div><!--/.row -->
+
+        <div class="row">
+        <div class="col-md-12">
+            <div class="wprt-spacer" data-desktop="60" data-mobi="40" data-smobi="40"></div>
+
+            <div class="text-center"><a href="<?php echo HTTP_PATH.'products/index' ; ?>" class="wprt-button rounded-3px">VIEW ALL</a></div>
+
+            <div class="wprt-spacer" data-desktop="60" data-mobi="40" data-smobi="40"></div>
+        </div><!-- /.col-md-12 -->
+            </div><!-- /.row -->
+        </div>
+        </div><!-- /.container -->
+            
+                      
+                    </section>
+
+                    <section class="wprt-section how-we-build">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="wprt-spacer" data-desktop="70" data-mobi="60" data-smobi="60"></div>
+                                    <h2 class="text-center margin-bottom-10"><?php echo $this->whatweare["pageTitle"]; ?></h2>
+                                    <div class="wprt-lines style-2 custom-1">
+                                        <div class="line-1"></div>
+                                    </div>
+
+                                    <div class="wprt-spacer" data-desktop="25" data-mobi="25" data-smobi="20"></div>
+
+                                    <p class="wprt-subtitle text-center"><?php echo $this->whatweare["content"]; ?></p>
+
+                                    <div class="wprt-spacer" data-desktop="50" data-mobi="40" data-smobi="40"></div>
+                                </div><!-- /.col-md-12 -->
+
+                                
+                                <div class="col-md-12">
+                                    <div class="wprt-spacer" data-desktop="70" data-mobi="60" data-smobi="60"></div>
+                                </div><!-- /.col-md-12 -->
+                            </div><!-- /.row -->
+                        </div><!-- /.container -->
+                    </section>
+    

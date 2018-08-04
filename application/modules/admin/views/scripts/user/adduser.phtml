@@ -1,0 +1,151 @@
+<?php
+$this->headTitle()->append($this->translate('Add User'));
+//$role =  Zend_Auth::getInstance()->getIdentity()->roleId;
+//if($role=='1' || $role=='2')
+{
+//$this->headMeta('keyword', 'noF');asdafasfasfasfa
+//file for upload imagesjquery-ui-1.8.16.custom.min.js
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.dataTables.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/dataTableComman.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.ui.widget.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.iframe-transport.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-fp.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-ui.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/jquery.validate.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/userList.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/bootbox.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery-ui-1.8.16.custom.min.js");
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "/css/jquery-ui-1.8.16.custom.css" );
+?>
+<!-- Div for add new user list  -->
+<div id='addNewUserDiv' class='wrap columns-2'>
+<form name="userRegister" id='userRegister' method='POST' action='<?php echo HTTP_PATH; ?>admin/user/saveuser' enctype="multipart/form-data">
+	<h1><?php echo $this->translate('Add New User'); ?><input type="button"  Value='<?php echo $this->translate('Cancel'); ?>' name='addNew' class="btn ml10" onClick="window.location.href='<?php echo HTTP_PATH; ?>admin/user'" /></h1>
+	
+	<div id='addNewUserDivInner' class="metabox-holder has-right-sidebar">
+	<div id="post-body">
+       <div>
+         <div class="mainpage-content">
+				<input type="hidden" name='userId' id='userId' value="<?php echo $this->id;?>" />
+				<input type="hidden" name='roleId' id='roleId' value="<?php echo $this->role;?>" />
+				<input type="hidden" name='imageName' id='imageName' value="" />
+				<input type="hidden" name='fevoriteStore' id='fevoriteStore' value="" />
+				
+				<input type="hidden" name='selectedShopId' id='selectedShopId' value="" />
+				
+						<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Email'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text"  maxlength="254" name="email" id="email" placeholder="<?php echo $this->translate('Email'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+						
+						
+						<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('First Name'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="text"  maxlength="50"  type="text" name="firstName" placeholder="<?php echo $this->translate('First Name'); ?>" class="span3"></div>                        
+                            </div>
+                        </div>
+                        
+                        
+						<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Last Name'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="text"  maxlength="50"  type="text" name="lastName" placeholder="<?php echo $this->translate('Last Name'); ?>" class="span3"></div>                        
+                            </div>
+                        </div>
+                        
+						
+					<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Password'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input  type="password" maxlength="20" name="password" id="password" placeholder="<?php echo $this->translate('Password'); ?>" class="span3"></div>                        
+                            </div>
+                        </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Re-type Password'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input  type="password" maxlength="20" name="confPassword" id="confPassword" placeholder="<?php echo $this->translate('Re-type Password'); ?>" class="span3"></div>                        
+                            </div>
+                        </div>
+                        
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Phone Number'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="text"  maxlength="20"  type="text" name="phoneNumber" placeholder="<?php echo $this->translate('PhoneNumber'); ?>" class="span3"></div>                        
+                            </div>
+                        </div>
+                   <div class="mainpage-content-line">
+                    <div class="mainpage-content-left"><label><strong><?php  echo $this->translate('Address'); ?></strong></label></div>
+                    <div class="mainpage-content-right">
+                        <div class="mainpage-content-right-inner-right-other"></div>
+                        <div class="mainpage-content-right-inner-left-other" style="border-bottom-width: 0px; margin-bottom: 10px;" >
+							<textarea class="input-xlarge mbot bbot ignore" id="maintext" placeholder="<?php echo $this->translate('Address'); ?>" rows="3" name="Address" ></textarea>
+                    	</div>
+                    </div>
+                        </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Zip Code'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="text"  maxlength="50"  type="text" name="ZipCode" placeholder="<?php echo $this->translate('Zip Code'); ?>" class="span3"></div>                        
+                            </div>
+                        </div>
+                       <!--   <div class="mainpage-content-line">
+                        	<div class="mainpage-content-left"><label><strong><?php  //echo $this->translate('Role'); ?></strong></label></div>
+                            <div class="mainpage-content-right">
+                                <div class="mainpage-content-right-inner-right-other"></div>
+                                    <div class="mainpage-content-right-inner-left-other">
+                                       <select name="role" id="role" class="mainpage-content-right-select">
+                                        <?php 
+											//foreach ($this->roles as $key=>$role)
+											{
+												// echo " <option value= '" . $key . "'>". $role . "</option>";
+											}
+                                   		?>
+                                       
+										
+                                      </select>
+                                    </div>
+                                </div>
+                        </div>-->
+                      <div class="mainpage-content-line">
+                           <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Upload Image'); ?></strong></label></div>
+                           <div class="mainpage-content-right control-group upload">
+                                <div class="mainpage-content-right-inner-right-other upload">
+                                <span class="ml15 img-name" id="avtarNameNew" ></span>
+                                </div>
+                          		
+                          		 <div class="mainpage-content-right-inner-left-other">
+                           		 <input  data-max-size="2097152"  class="span3 ignore" type="file" onchange="checkFileType(event)" name="imageName">
+                               
+                             </div>                        
+                            </div>
+                        </div>
+                        
+            <div class="mainpage-content-colorbox">
+            	<button id='saveUser'  type="submit" class="btn btn-large btn-primary fl" ><?php echo $this->translate('CREATE PROFILE'); ?></button>
+				<a href="<?php echo HTTP_PATH; ?>admin/user"  class="fl m10"><strong><?php echo $this->translate('CANCEL'); ?></strong></a>
+            <button type="button"  Value='<?php echo $this->translate('Cancel'); ?>' name='addNew' class="btn ml10" onClick="window.location.href='<?php echo HTTP_PATH; ?>admin/user'"></button>
+            </div>
+            
+            <!-- /poststuff -->
+             </form>
+        </div>
+        <?php 
+ 
+}
+ ?>
+
+
+ 

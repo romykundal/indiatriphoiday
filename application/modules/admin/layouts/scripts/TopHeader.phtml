@@ -1,0 +1,14 @@
+      <div class="update-nag">
+      <?php $sessionNamespace = new Zend_Session_Namespace(); ?>
+                  <p class="toplinks-outer" style="width:480px;"><span class="text"><?php echo $this->translate('Welcome');?>,</span> <a class="userFirstName" href="<?php echo HTTP_PATH;?>admin/useradmin/profile">
+      <?php 
+	$firstName =  Zend_Auth::getInstance()->getIdentity()->firstName;
+		if( strlen( $firstName ) > 20 ) {
+			$cut_text = substr( $firstName , 0, 10 ); //cut at 17 chars
+			$end_text = $cut_text."..."; // add three dots
+			$firstName =  sprintf( "<abbr title='%s'>%s</abbr>" , $firstName , $end_text);
+		}
+	echo ucfirst(strtolower($firstName)) ;
+      ?>
+            </a> | &nbsp;&nbsp;<a href="<?php echo HTTP_PATH.'admin/Auth/logout';?>" class="logout" ><img src="<?php echo PUBLIC_PATH;?>images/back_end/lock.png" border="0" /><?php echo $this->translate('Logout');?></a></p>
+      </div>

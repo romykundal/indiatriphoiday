@@ -1,0 +1,235 @@
+<?php
+$this->headTitle()->append($this->translate('Edit Order'));
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.dataTables.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/dataTableComman.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.ui.widget.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.iframe-transport.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-fp.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-ui.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/jquery.validate.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/gallery.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/bootbox.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery-ui-1.8.16.custom.min.js");
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "/css/jquery-ui-1.8.16.custom.css" );
+?>
+<style>
+<!--
+#someID{
+  margin-left:215px;
+}
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+
+var MaxImage = 5-<?php echo count($this->imgprodct) ?>;
+
+//-->
+</script>
+
+<!-- Div for add edit user list  -->
+<div id='editUserDiv' class="wrap columns-2">
+         <h1><?php  echo $this->translate('Edit Order'); ?>
+          <input type="button"  Value='<?php echo $this->translate('Cancel'); ?>' name='Order' class="btn ml10" onClick="window.location.href='<?php echo HTTP_PATH; ?>admin/orders'" />
+          </h1>
+    <form name="addOrder" id='addOrder' method='POST' action='' enctype="multipart/form-data">
+  <div id='addNewUserDivInner' class="metabox-holder has-right-sidebar">
+  <div id="post-body">
+       <div>
+           <div class="mainpage-content">
+            <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate(' User Name'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input disabled type="text"  maxlength="54" name="Title" id="Title" value="<?php echo $this->productdata["name"] ; ?>" placeholder="<?php echo $this->translate('Name'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+                        
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('User Phone Number'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text" disabled  maxlength="54" name="Slug" id="Slug" value="<?php echo $this->productdata["phoneNumber"] ; ?>" placeholder="<?php echo $this->translate('phoneNumber'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+                        
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('User Email'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text" disabled name="email" id="email" value="<?php echo $this->productdata["email"] ; ?>" placeholder="<?php echo $this->translate('Email'); ?>" class="span3">
+                                
+                                </div>                        
+                            </div>
+                        </div>
+                        <!--  <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Travel Type'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text" disabled name="travelType" id="travelType" value="<?php echo ucfirst($this->productdata["travelType"]) ; ?>" placeholder="<?php echo $this->translate('travelType'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div> -->
+
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Departure location'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text" disabled name="departure" id="departure" value="<?php echo $this->productdata["departure"] ; ?>" placeholder="<?php echo $this->translate('Departure'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Arrival location'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text" disabled name="arrival" id="arrival" value="<?php echo $this->productdata["arrival"] ; ?>" placeholder="<?php echo $this->translate('Arrival'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Total Members'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+<input type="text" value="<?php echo "Adult: " .$this->productdata["adult"] ." Children: ". $this->productdata["child"]. " Infant: " .$this->productdata["infant"] ; ?>" placeholder="<?php echo $this->translate('Members'); ?>" disabled name="members" id="members" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Departure Date'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text" value="<?php echo $this->productdata["departureDate"] ; ?>" name="departureDate" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Return Date'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text" name="returnDate" value="<?php echo $this->productdata["returnDate"] ; ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>      
+
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Departure Time'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text" name="departureTime" value="<?php echo $this->productdata["departureTime"] ; ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Return Time'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text" name="returnTime" value="<?php echo $this->productdata["returnTime"] ; ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>                        
+
+                  
+                        <!-- <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Class'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text" disabled value="<?php echo $this->productdata["class"] ; ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>      -->
+
+
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Base Fare'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text"  maxlength="54" name="baseFare" id="baseFare" value="<?php echo $this->productdata["baseFare"] ; ?>" placeholder="<?php echo $this->translate('baseFare'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Surcharges'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text"  maxlength="54" name="surcharges" id="surcharges" value="<?php echo $this->productdata["surcharges"] ; ?>" placeholder="<?php echo $this->translate('surcharges'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('grandTotal'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text"  maxlength="54" name="grandTotal" id="grandTotal" value="<?php echo $this->productdata["grandTotal"] ; ?>" placeholder="<?php echo $this->translate('grandTotal'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Number of Stops'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text"  maxlength="54" name="stop" id="stop" value="<?php echo $this->productdata["stop"] ; ?>" placeholder="<?php echo $this->translate('stop'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+
+
+                      <div class="mainpage-content-line">
+                              <div class="mainpage-content-left"><label><strong><?php  echo $this->translate('Package Details'); ?></strong></label></div>
+                              <div class="mainpage-content-right">
+                                <div class="mainpage-content-right-inner-right-other"></div>
+                                <div class="mainpage-content-right-inner-left-other" style="border-bottom-width: 0px; margin-bottom: 10px;" >
+                      <textarea class="input-xlarge mbot bbot ignore" id="stopDetails" placeholder="<?php echo $this->translate('stopDetails'); ?>" name="stopDetails"  rows="3" ><?php echo $this->productdata["stopDetails"] ; ?></textarea>
+                        </div>
+                        </div>
+                      </div>
+           
+                      <div class="mainpage-content-line">
+                          <div class="mainpage-content-left"><strong><?php echo $this->translate('Status') . $this->productdata["status"]; ?></strong></div>
+                          <div class="mainpage-content-right">
+                          <div class="mainpage-content-right-inner-right-other"></div>
+                          <div class="mainpage-content-right-inner-left-other">
+                        <select name="status" class="combobox" id="status">
+                          <option value="">Choose Status</option>
+                            <option <?php if(trim($this->productdata["status"]) == "pending") { echo "selected"; } ?> value="pending">Pending</option>
+                            <option <?php if(trim($this->productdata["status"]) == "booked") { echo "selected"; } ?> value="booked">Booked</option>
+                            <option <?php if(trim($this->productdata["status"]) == "cancelled") { echo "selected"; } ?> value="cancelled">Cancelled</option>
+                          
+                        </select>
+                       </div>
+                       </div>
+                    </div>
+      
+            <div class="clear"></div>      
+            <div class="mainpage-content-colorbox">
+              <input type="hidden" name="contr" id="editcontr" value="update">
+              <button id='saveProducts'  type="submit" class="btn btn-large btn-primary fl" ><?php echo $this->translate('Save'); ?></button>
+              <a href="<?php echo HTTP_PATH; ?>admin/orders/index"  class="fl m10"><strong><?php echo $this->translate('CANCEL'); ?></strong></a>
+            </div>
+      
+    </form>
+ 
+      </div>

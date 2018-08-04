@@ -1,0 +1,113 @@
+  
+<!-- Footer -->
+<footer id="footer">
+    <div id="footer-widgets" class="container style-1">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="widget widget_text">
+                    <h2 class="widget-title"><span>ABOUT US</span></h2>
+                    <div class="textwidget">
+                        <img src="<?php echo PUBLIC_PATH; ?>images/front_end/logo.png" width="300" height="60" alt="image" class="margin-top-5 margin-bottom-25" />
+                        <p><?php echo $this->footerAbout["content"]; ?></p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="widget widget_links">
+                    <h2 class="widget-title"><span>Site Map</span></h2>
+                    <ul class="wprt-links clearfix col1">
+<li class="style-2"><a href="<?php echo HTTP_PATH.'products/index/p/28/t/INTERNATIONAL' ; ?>">Home</a></li>                        
+<li class="style-2"><a href="<?php echo HTTP_PATH.'products/index/p/28/t/INTERNATIONAL' ; ?>">INTERNATIONAL</a></li>
+<li class="style-2"><a href="<?php echo HTTP_PATH.'products/index/p/27/t/INDIA' ; ?>">INDIA</a></li>
+<li class="style-2"><a href="<?php echo HTTP_PATH.'products/index/p/30/t/FLIGHTS' ; ?>">FLIGHTS</a></li>
+<li class="style-2"><a href="<?php echo HTTP_PATH.'products/index/p/31/t/HOTELS' ; ?>">HOTELS</a></li>
+<li class="style-2"><a href="<?php echo HTTP_PATH.'products/index/p/32/t/BUS' ; ?>">BUS</a></li>
+<li class="style-2"><a href="<?php echo HTTP_PATH.'products/index/p/33/t/TAXI' ; ?>">TAXI</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="widget widget_information">
+                    <h2 class="widget-title"><span>CONTACT INFO</span></h2>
+                    <ul class="style-2">
+                        <li class="address clearfix">
+                            <span class="hl">Address:</span>
+                            <span class="text">SCO 85, 2nd Floor, Sector 35-C, Chandigarh, 160022</span>
+                        </li>
+                        <li class="phone clearfix">
+                            <span class="hl">Phone:</span> 
+                            <span class="text">+91 81-786-595-75</span>
+                        </li>
+                        <li class="email clearfix">
+                            <span class="hl">E-mail:</span>
+                            <span class="text">info@indiatripholiday.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="widget widget_spacer">
+                    <div class="wprt-spacer clearfix" data-desktop="10" data-mobi="10" data-smobi="10"></div>
+                </div>
+
+                <div class="widget widget_socials">
+                    <div class="socials">
+                        <a target="_blank" href="#"><i class="fa fa-twitter"></i></a>
+                        <a target="_blank" href="https://www.facebook.com/Indiatripholidaycom-167430244036097/"><i class="fa fa-facebook"></i></a>
+                        <a target="_blank" href="https://www.instagram.com/indiatripholiday/"><i class="fa fa-instagram"></i></a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bottom -->
+<div id="bottom" class="clearfix style-1">
+    <div id="bottom-bar-inner" class="wprt-container">
+        <div class="bottom-bar-inner-wrap">
+        
+            <div class="bottom-bar-content">
+                <!-- <div id="copyright">INDIATRIPHOLIDAY &copy; 2018. -->
+                </div><!-- /#copyright -->
+            </div><!-- /.bottom-bar-content -->
+
+            <div style="text-align: left;" class="bottom-bar-menu">
+                <ul class="bottom-nav">
+                    <li><a href="<?php echo HTTP_PATH.'index/privacy' ; ?>">Privacy Policy</a></li>
+                    <li><a href="<?php echo HTTP_PATH.'index/faq' ; ?>">FAQ</a></li>
+                    <li><a href="<?php echo HTTP_PATH.'index/termscond' ; ?>">Terms & Conditions</a></li>
+                </ul>       
+            </div><!-- /.bottom-bar-menu -->
+        </div>
+    </div>
+</div>
+</div><!-- /#page -->
+</div><!-- /#wrapper -->
+
+<a id="scroll-top"></a>
+
+<?php 
+
+
+    //$this->headScript ()->appendFile ( PUBLIC_PATH . "js/front_end/jquery.min.js" );
+    $this->headScript ()->prependFile ( PUBLIC_PATH . "js/front_end/bootstrap.min.js" );
+    $this->headScript ()->prependFile ( PUBLIC_PATH . "js/front_end/animsition.js" );
+    $this->headScript ()->prependFile ( PUBLIC_PATH . "js/front_end/plugins.js" );
+    $this->headScript ()->prependFile ( PUBLIC_PATH . "js/front_end/countTo.js" );
+    $this->headScript ()->prependFile ( PUBLIC_PATH . "js/front_end/fitText.js" );
+    $this->headScript ()->prependFile ( PUBLIC_PATH . "js/front_end/flexslider.js" );
+    $this->headScript ()->prependFile ( PUBLIC_PATH . "js/front_end/vegas.js" );
+    $this->headScript ()->prependFile ( PUBLIC_PATH . "js/front_end/cube.portfolio.js" );
+    $this->headScript ()->prependFile ( PUBLIC_PATH . "js/front_end/main.js" );
+
+echo $this->headScript ();
+
+
+?>
+
+</body>
+</html>

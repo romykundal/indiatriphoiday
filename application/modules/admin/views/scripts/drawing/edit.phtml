@@ -1,0 +1,115 @@
+ <?php
+    $this->headTitle()->append($this->translate('Edit Drawing'));
+    $this->headScript ()->appendFile ( PUBLIC_PATH . "/js/back_end/jquery.validate.js" );
+	$this->headScript ()->appendFile ( PUBLIC_PATH . "/js/back_end/editDrawing.js" );
+	$this->headScript ()->appendFile ( PUBLIC_PATH . "/js/back_end/jquery.textareaCounter.plugin.js");
+	$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/bootbox.min.js");
+	$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery-ui-1.8.16.custom.min.js");
+	$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "/css/jquery-ui-1.8.16.custom.css" );
+	
+	?>
+<?php 
+
+$drawingPicturePath = '';
+$drawingPictureName = '';
+$drawingPictureId = "";
+if(file_exists($this->editRec['images']['path'].'thum_'.$this->editRec['images']['name'])) {
+	
+	$drawingPicturePath = PUBLIC_PATH.$this->editRec['images']['path'].'thum_'.$this->editRec['images']['name'];
+	
+	$drawingPictureName = $this->editRec['images']['name'];
+	$drawingPictureId = $this->editRec['images']['id'];
+	
+
+}else {
+	
+	$drawingPicturePath = PUBLIC_PATH ."images/upload/category/user-avtar.jpg";
+	
+}
+ 
+
+
+?>
+
+<div class="wrap columns-2" id="editDrawing">
+	<form action="<?php echo HTTP_PATH ;?>admin/drawing/edit" method="POST" id="editDrawingForm" name="editDrawingForm" enctype="multipart/form-data">
+	<input type="hidden" value="<?php echo $drawingPictureId; ?>" name='iconId' id='iconId' />
+	<input type="hidden" value="<?php echo $this->editRec["id"]; ?>" name='id' id='id' />
+	<input type="hidden" value="<?php echo $drawingPictureName; ?>" name='icon' id='icon' />
+	<input type="hidden" value="<?php echo $this->editRec["User"]["id"]; ?>" name='userId' id='userId' />
+	
+	
+		<h1><?php echo $this->translate('Edit Drawing'); ?><input type="button"  Value='<?php echo $this->translate('Cancel'); ?>' class="btn ml10" onClick="window.location.href='<?php echo HTTP_PATH; ?>admin/Drawing'" /></h1>
+
+		<div id="poststuff" class="metabox-holder has-right-sidebar">
+			<div id="post-body">
+				<div>
+					<div class="mainpage-content">
+					
+				<h2><?php echo $this->translate('Customer information'); ?></h2>	
+					<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('First Name'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="text" value="<?php echo $this->editRec["User"]["firstName"]; ?>"  maxlength="50"  type="text" name="firstName" placeholder="<?php echo $this->translate('First Name'); ?>" class="span3"></div>                        
+                            </div>
+                        </div>
+                        
+                        
+						<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Last Name'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="text" value="<?php echo $this->editRec["User"]["lastName"]; ?>"  maxlength="50"  type="text" name="lastName" placeholder="<?php echo $this->translate('Last Name'); ?>" class="span3"></div>                        
+                            </div>
+                        </div>
+					
+						<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Email'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text"  maxlength="254" name="email" id="email" value="<?php echo $this->editRec["User"]["email"]; ?>" placeholder="<?php echo $this->translate('Email'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                    </div>
+
+         </div>           
+              <div class="mainpage-content">      
+		<h2><?php echo $this->translate('Drawing information'); ?></h2>
+		                <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Title'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input  type="text" value="<?php echo $this->editRec["title"]; ?>"  maxlength="20" name="Title" id="Title" placeholder="<?php echo $this->translate('Title'); ?>" class="span3"></div>                        
+                            </div>
+                        </div>
+        
+						<div class="mainpage-content-line">
+							<div class="mainpage-content-left">
+								<label><strong><?php echo $this->translate('Drawing Icon'); ?></strong></label>
+							</div>
+							<div class="mainpage-content-right control-group">
+							 <img src ="<?php echo $drawingPicturePath; ?>" alt = "Image" >
+								<div class="mainpage-content-right-inner-right-other upload"><?php echo $this->translate('.jpg, .jpeg or .png'); ?></div>
+								<div class="mainpage-content-right-inner-left-other">
+									<input class="span3 ignore" data-max-size="2097152" onchange="checkFileType(event)" type="file" name="DrawingIconNameHidden">
+								</div>
+							</div>
+						</div>
+			</div>
+
+				</div>
+			</div>
+			<br class="clear">
+		</div>
+		<div class="mainpage-content-colorbox">
+			<button id='updateDrawing' type="submit" class="btn btn-large btn-primary fl">
+            		<?php echo $this->translate('Edit Drawing')?>
+            	</button>
+			<a href="<?php echo HTTP_PATH; ?>admin/drawing" class="fl m10"
+				id="cancelDrawing"> <strong><?php echo $this->translate('CANCEL')?></strong></a>
+		</div>
+		<!-- /poststuff -->
+	</form>
+</div>

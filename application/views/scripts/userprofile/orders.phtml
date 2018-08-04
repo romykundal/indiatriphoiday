@@ -1,0 +1,101 @@
+<style type="text/css" media="screen">
+.table .thead-dark th{
+    color: #fff;
+    background-color: #212529;
+    border-color: #32383e;
+}
+</style>
+
+<!-- <div id="content-body">
+	<div class="category">
+    	
+    <h1 style="margin-left: 80px;">       
+       <strong style="font-weight: bold;"><?php //echo ucfirst($this->heading); ?> </strong>
+    </h1> 
+    </div>
+    <div class="clear"></div>
+</div> -->
+
+        <!-- Start Main Content -->
+        <div class="main-content">
+        <div class="container">
+        <div class="row">
+        <div class="col-md-8">
+
+    <div class="row">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">From</th>
+              <th scope="col">To</th>
+              <th scope="col">Name</th>
+              <th scope="col">Status</th>
+              <th scope="col">View</th>
+            </tr>
+          </thead>
+          <tbody>
+        <?php foreach ($this->orders as $key => $value) { ?> 
+            <tr>
+              <td><?php echo $value["departure"]; ?></td>
+              <td><?php echo $value["arrival"]; ?></td>
+              <td><?php echo $value["name"]; ?></td>
+              <td><?php echo $value["status"]; ?></td>
+              <td><a style="font-size: 20px;" href="<?php echo HTTP_PATH.'userprofile/ordersinfo/order/'.$value["id"] ; ?>" title="Order Details"><i class="fa fa-eye"></i></a></td>
+            </tr>
+          <?php  } ?>
+          </tbody>
+        </table>
+                   
+</div>
+
+
+        </div>
+        
+        <div class="col-md-4">
+        <div class="sidebar">
+        <div class="widget">    
+        <h3 class="sidebar-title">My Account</h3>      
+        <div id="nt-container">
+        
+        <ul id="accountul">
+            <li>
+                <a href="<?php echo HTTP_PATH.'userprofile/orders' ; ?>">
+                <div class="news-item">
+                    <div class="news-text">
+                        <h4>My Orders</h4>
+                    </div>
+                </div><!-- News Item -->
+            </a>
+            </li>
+
+            <li>
+                <a href="<?php echo HTTP_PATH.'userprofile/profilesetting' ; ?>">
+                <div class="news-item">
+                    <div class="news-text">
+                        <h4>My Account info</h4>
+                    </div>
+                </div><!-- News Item -->
+            </a>
+            </li>
+
+            <li>
+                <a href="<?php echo HTTP_PATH.'user/logout' ; ?>">
+                <div class="news-item">
+                    <div class="news-text">
+                        <h4>Logout</h4>
+                    </div>
+                </div><!-- News Item -->
+            </a>
+            </li>
+            
+        </ul>
+       
+    </div>
+    </div>
+
+    </div><!-- .sidebar -->
+    </div><!-- .col-sm-4 -->
+
+    </div>
+    </div>
+    </div>

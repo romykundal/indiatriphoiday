@@ -1,0 +1,123 @@
+
+
+<link href='http://fonts.googleapis.com/css?family=Dancing+Script:700|Mako' rel='stylesheet' type='text/css'>
+<?php
+
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "js/front_end/jackbox/preview.css" );
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "js/front_end/jackbox/css/jackbox.css" );
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "js/front_end/jackbox/css/jackbox_hovers.css" );
+
+?>
+        <!--[if lt IE 9]>
+        	<link href="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/css/jackbox-ie8.css" rel="stylesheet" type="text/css" />
+        	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        
+        <!--[if gt IE 8]><link href="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/css/jackbox-ie9.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+<?php 
+
+
+$this->headScript ()->appendFile ( "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" );
+$this->headScript ()->appendFile ( PUBLIC_PATH . "js/front_end/jackbox/js/libs/jquery.address-1.5.min.js" );
+$this->headScript ()->appendFile ( PUBLIC_PATH . "js/front_end/jackbox/js/libs/Jacked.js" );
+$this->headScript ()->appendFile ( PUBLIC_PATH . "js/front_end/jackbox/js/jackbox-swipe.js" );
+$this->headScript ()->appendFile ( PUBLIC_PATH . "js/front_end/jackbox/js/jackbox.js" );
+$this->headScript ()->appendFile ( PUBLIC_PATH . "js/front_end/jackbox/js/libs/StackBlur.js" );
+
+
+echo $this->headStyle ();
+echo $this->headLink ();
+echo $this->headScript ();
+
+
+
+//$imagesArray = $this->imagesArray;
+
+
+?>
+
+        <script type="text/javascript">
+		
+			jQuery(document).ready(function() {
+
+
+				/* ******************** */
+				/* MINIMAL JACKBOX CALL */
+				/* ******************** */
+				jQuery(".jackbox[data-group]").jackBox("init");
+
+				//jQuery(".jackbox-social").hide();				
+				
+				
+				/* ************* */
+				/* DYNAMIC CALLS */
+				/* ************* */
+			
+			});
+		
+		</script>
+
+<style>
+<!--
+#container{
+float: none;
+}
+
+.jackbox-social{
+	
+	display: none;
+	
+}
+-->
+</style>
+        
+
+ <div id="wrapper">
+        	
+            <div id="holder">
+                
+
+            	 <div id="container"> 
+                    
+                    <figure class="box">
+
+						<a class="jackbox" 
+                        
+                        	data-group="images" 
+                            data-thumbnail="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/thumbs/1a.jpg" 
+                            data-thumbTooltip="Awesome Looking Car" 
+                            data-title="Awesome Car with " 
+                            data-description="#description_1" 
+                            href="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/photos/1.jpg" > <!-- end opening tag -->
+    
+                            <!-- thumbnail -->
+                            <div class="jackbox-hover jackbox-hover-blur jackbox-hover-magnify">
+                            <p>Blur Hover</p></div>
+                            <img src="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/thumbs/1.jpg" width="180" height="150" alt="responsive lightbox" />
+                            
+                        </a>
+                        
+                        
+                        <ul class="jackbox-hidden-items">
+                        	
+                            <!-- for hidden items, "data-href" is used instead of the regular "href" attribute that regular links use like above -->
+                        	<li class="jackbox" data-group="images" data-title="Man Wearing Jacket" data-description="#description_1" data-thumbnail="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/thumbs/2a.jpg" data-href="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/photos/2.jpg"></li>
+                            
+                            <li class="jackbox" data-group="images" data-title="Leather Coat" data-description="#description_1" data-thumbnail="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/thumbs/3a.jpg" data-href="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/photos/3.jpg"></li>
+                            <li class="jackbox" data-group="images" data-title="Man Wearing Scarf" data-description="#description_1" data-thumbnail="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/thumbs/4a.jpg" data-href="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/photos/4.jpg"></li>
+                            <li class="jackbox" data-group="images" data-title="Cool Sunglasses" data-description="#description_1" data-thumbnail="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/thumbs/5a.jpg" data-href="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/photos/5.jpg"></li>
+                            <li class="jackbox" data-group="images" data-title="Coffee Mug" data-description="#description_1" data-thumbnail="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/thumbs/6a.jpg" data-href="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/photos/6.jpg"></li>
+                            <li class="jackbox" data-group="images" data-title="Woman Wearing Rings" data-description="#description_1" data-thumbnail="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/thumbs/7a.jpg" data-href="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/photos/7.jpg"></li>
+                            <li class="jackbox" data-group="images" data-title="Awesome Car" data-description="#description_1" data-thumbnail="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/thumbs/8a.jpg" data-href="<?php echo PUBLIC_PATH; ?>js/front_end/jackbox/img/photos/8.jpg"></li>
+                        
+                        </ul>
+                    </figure>				
+  <!-- End slider code -->
+  
+  
+  </div>
+      <div class="clr"></div>
+</div></div>
+
+</div>

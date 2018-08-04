@@ -1,0 +1,79 @@
+<?php
+$this->headTitle()->append($this->translate('Add Song'));
+
+{
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.dataTables.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/dataTableComman.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.ui.widget.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.iframe-transport.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-fp.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-ui.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/jquery.validate.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/songsList.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/bootbox.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery-ui-1.8.16.custom.min.js");
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "/css/jquery-ui-1.8.16.custom.css" );
+?>
+
+<style>
+<!--
+#someID{
+	margin-left:215px;
+}
+-->
+</style>
+
+<!-- Div for add new user list  -->
+<div id='addNewregionDiv' class='wrap columns-2'>
+<form name="addSongs" id='addSongs' method='POST' action='<?php echo HTTP_PATH; ?>admin/Songs/addsongs' enctype="multipart/form-data">
+	<h1><?php echo $this->translate('Add New Songs'); ?></h1>
+
+         <div class="mainpage-content">
+				
+				 	
+						<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Song Name'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text"  maxlength="100" name="SongName" id="SongName" placeholder="<?php echo $this->translate('Song Name'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+				
+			           <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Artist Name'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text"  maxlength="100" name="ArtistName" id="ArtistName" placeholder="<?php echo $this->translate('Artist Name'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+                 		
+			         <div class="mainpage-content-line">
+                    <div class="mainpage-content-left"><label><strong><?php  echo $this->translate('Lyrics'); ?></strong></label></div>
+                    <div class="mainpage-content-right">
+                        <div class="mainpage-content-right-inner-right-other"></div>
+                        <div class="mainpage-content-right-inner-left-other" style="border-bottom-width: 0px; margin-bottom: 10px;" >
+							<textarea class="input-xlarge mbot bbot ignore"  id="Lyrics"  placeholder="<?php echo $this->translate('Lyrics'); ?>" name="Lyrics" rows="20" ></textarea>
+                    	</div>
+                    </div>
+                        </div>
+                <div></div>
+                       
+                        <div class="clear"></div>
+                        
+        
+            <div class="mainpage-content-colorbox">
+            	<button id='saveSongs'  type="submit" class="btn btn-large btn-primary fl" ><?php echo $this->translate('Save'); ?></button>
+				<a href="<?php echo HTTP_PATH; ?>admin/Songs/"  class="fl m10"><strong><?php echo $this->translate('CANCEL'); ?></strong></a>
+           
+            </div>
+            </form>
+                        	</div>
+            <!-- /poststuff -->
+        
+ <?php }?>
+ 

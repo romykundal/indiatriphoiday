@@ -1,0 +1,103 @@
+<?php
+
+  $this->headTitle()->append($this->translate('Add Drawing'));
+  $this->headScript ()->appendFile ( PUBLIC_PATH . "/js/back_end/jquery.validate.js" );
+  $this->headScript ()->appendFile ( PUBLIC_PATH . "/js/back_end/addDrawing.js" );
+  $this->headScript ()->appendFile ( PUBLIC_PATH . "/js/back_end/jquery.textareaCounter.plugin.js");
+?>
+<div class="wrap columns-2" id="createDrawing">
+	<form action="<?php echo HTTP_PATH ;?>admin/drawing/add" method="POST" id="saveDrawingForm" name="saveDrawingForm" enctype="multipart/form-data">
+	<input type="hidden" value="" name='iconId' id='iconId' />
+	<input type="hidden" value="" name='id' id='id' />
+	
+		<h1><?php echo $this->translate('Create Drawing'); ?><input type="button"  Value='<?php echo $this->translate('Cancel'); ?>' class="btn ml10" onClick="window.location.href='<?php echo HTTP_PATH; ?>admin/Drawing'" /></h1>
+
+		<div id="poststuff" class="metabox-holder has-right-sidebar">
+			<div id="post-body">
+				<div>
+					<div class="mainpage-content">
+					
+				<h2><?php echo $this->translate('Customer information'); ?></h2>	
+					<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('First Name'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="text"  maxlength="50"  type="text" name="firstName" placeholder="<?php echo $this->translate('First Name'); ?>" class="span3"></div>                        
+                            </div>
+                        </div>
+                        
+                        
+						<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Last Name'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="text"  maxlength="50"  type="text" name="lastName" placeholder="<?php echo $this->translate('Last Name'); ?>" class="span3"></div>                        
+                            </div>
+                        </div>
+					
+						<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Email'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text"  maxlength="254" name="email" id="email" placeholder="<?php echo $this->translate('Email'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                    </div>
+
+						
+					<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Password'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input  type="password" maxlength="20" name="password" id="password" placeholder="<?php echo $this->translate('Password'); ?>" class="span3"></div>                        
+                            </div>
+                    </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Re-type Password'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input  type="password" maxlength="20" name="confPassword" id="confPassword" placeholder="<?php echo $this->translate('Re-type Password'); ?>" class="span3"></div>                        
+                            </div>
+                        </div>
+         </div>           
+              <div class="mainpage-content">      
+		<h2><?php echo $this->translate('Drawing information'); ?></h2>
+		                <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Title'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input  type="text" maxlength="20" name="Title" id="Title" placeholder="<?php echo $this->translate('Title'); ?>" class="span3"></div>                        
+                            </div>
+                        </div>
+        
+		
+						<div class="mainpage-content-line">
+							<div class="mainpage-content-left">
+								<label><strong><?php echo $this->translate('Drawing Icon'); ?></strong></label>
+							</div>
+							<div class="mainpage-content-right control-group">
+								<div class="mainpage-content-right-inner-right-other upload"><?php echo $this->translate('.jpg, .jpeg or .png'); ?></div>
+								<div class="mainpage-content-right-inner-left-other">
+									<input class="span3 ignore" data-max-size="2097152" onchange="checkFileType(event)" type="file" name="DrawingIconNameHidden">
+
+								</div>
+							</div>
+						</div>
+
+			</div>
+
+				</div>
+			</div>
+			<br class="clear">
+		</div>
+		<div class="mainpage-content-colorbox">
+			<button id='saveDrawing' type="submit" class="btn btn-large btn-primary fl">
+            		<?php echo $this->translate('CREATE Drawing')?>
+            	</button>
+			<a href="<?php echo HTTP_PATH; ?>admin/Drawing" class="fl m10"
+				id="cancelDrawing"> <strong><?php echo $this->translate('CANCEL')?></strong></a>
+		</div>
+		<!-- /poststuff -->
+	</form>
+</div>

@@ -1,0 +1,122 @@
+<?php
+
+$this->headTitle()->append($this->translate('Account setting'));
+
+
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.ui.widget.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.iframe-transport.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-fp.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-ui.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/jquery.validate.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/profile.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/bootbox.min.js");
+
+//$userName = $this->profile->email;
+//print_r($userName); die;
+
+?>
+
+
+
+
+<div class="wrap columns-2">
+<?php if($this->messageSuccess!='' || $this->messageError!='' ){?>
+		<br><div class ="mainpage-content-colorbox success">
+		<?php if($this->messageSuccess!=''){?>
+		<span class="successserver"><?php echo $this->messageSuccess; ?></span>
+		<?php }?>
+		<?php if($this->messageError!=''){?>
+		<span class="errorserver"><?php echo $this->messageError; ?></span>
+		<?php } ?>
+		</div>
+		<?php 
+		}?>
+      <form name="userProfile" action="<?php echo HTTP_PATH; ?>admin/useradmin/updateprofile" id='userProfile' method='POST' enctype="multipart/form-data">   
+			<h1><?php echo $this->translate('Account Setting'); ?></h1>
+			
+         	<input type="hidden" name='id' id='id' value="<?php echo  @$this->profile['id'] ;?>" />
+         	
+         		
+         	<div id="poststuff" class="metabox-holder has-right-sidebar">
+              <div id="post-body">
+              	<div>
+              		<div class="mainpage-content">
+                    	<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Email'); ?></strong></label></div>
+                            <div class="mainpage-content-right">
+                                <div class="mainpage-content-right-inner-right-other"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="text" name="email"  disabled="disabled" value="<?php echo @$this->profile['email'] ;?>" placeholder="<?php echo $this->translate('Email'); ?>" class="span3">
+                                <input type="hidden" name="email" value="<?php echo @$this->profile['email'] ;?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('First Name'); ?></strong></label></div>
+                            <div class="mainpage-content-right">
+                                <div class="mainpage-content-right-inner-right-other"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="text" maxlength="50" id="firstName" name="firstName" value="<?php echo @$this->profile['firstName'] ;?>" placeholder="<?php echo $this->translate('First Name'); ?>" class="span3"></div>                        
+                            </div>
+                        </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Last Name'); ?></strong></label></div>
+                            <div class="mainpage-content-right">
+                                <div class="mainpage-content-right-inner-right-other"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="text" maxlength="50" id="lastName" name="lastName" value="<?php echo @$this->profile['lastName'] ;?>"  placeholder="<?php echo $this->translate('Last Name'); ?>" class="span3"></div>              
+                        </div>
+                        </div>
+                       
+                       </div>
+                        
+                    </div>
+                    
+                </div>
+              </div>
+              <div class="clear">&nbsp;</div>
+              <!-- <div class="clear">
+            		<h1><?php echo $this->translate('Change Password'); ?></h1>
+              </div> -->
+            
+            
+            <!-- <div id="poststuff" class="metabox-holder has-right-sidebar">
+              <div id="post-body">
+              	<div>
+              		<div class="mainpage-content">
+                    	<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Old Password'); ?></strong></label></div>
+                            <div class="mainpage-content-right">
+                                <div class="mainpage-content-right-inner-right-other"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="password"  maxlength="20" id="oldPassword" name="oldPassword" placeholder="<?php echo $this->translate('Old Password'); ?>" class="span3 passwordField"></div>                        
+                            </div>
+                        </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('New Password'); ?></strong></label></div>
+                            <div class="mainpage-content-right">
+                                <div class="mainpage-content-right-inner-right-other"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="password"  maxlength="20" id="newPassword" name="newPassword" placeholder="<?php echo $this->translate('New Password'); ?>" class="span3 passwordField"></div>                        
+                            </div>
+                        </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Re-type New Password'); ?></strong></label></div>
+                            <div class="mainpage-content-right">
+                                <div class="mainpage-content-right-inner-right-other"></div>
+                                <div class="mainpage-content-right-inner-left-other"><input type="password" maxlength="20" id="confirmNewPassword" name="confirmNewPassword" placeholder="<?php echo $this->translate('Re-type New Password'); ?>" class="span3 passwordField"></div>                        
+                            </div>
+                        </div>          
+                        
+                    </div>
+                    
+                </div>
+              </div>
+              <br class="clear">
+            </div> -->
+            
+            
+            
+            <div class="mainpage-content-colorbox">
+            	<button type="submit" class="btn btn-large btn-primary fl"><?php echo $this->translate('UPDATE PROFILE'); ?></button>
+                <a href="<?php echo HTTP_PATH;?>admin" class="fl m10 cancelButton"><strong><?php echo $this->translate('CANCEL'); ?></strong></a>
+                
+            </div>
+      </form>      
+</div>

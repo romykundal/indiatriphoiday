@@ -1,0 +1,120 @@
+<?php 
+/*$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "css/datepicker.css" );
+$this->headScript()->appendFile(PUBLIC_PATH . "js/bootstrap-datepicker.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/back_end/date.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/bootstrap-timepicker.js");
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "css/timepicker.css" );*/
+$this->headScript()->appendFile(PUBLIC_PATH . "js/back_end/jquery.validate.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/back_end/addpage.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/back_end/bootbox.min.js");
+$this->headScript ()->appendFile ( PUBLIC_PATH . "/js/jquery.NobleCount.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/back_end/jquery.textareaCounter.plugin.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/back_end/ckeditor/ckeditor.js");
+$this->headScript ()->appendFile ( PUBLIC_PATH . "js/back_end/ckeditor/config.js" );
+
+$publishDate = date('d-m-Y');
+$publishHHM = date('H').':'.date('i');
+
+ $currentTime = strtotime(date('d-m-Y H:i:00')); 
+  
+ 
+?>
+<?php echo $this->headTitle()->append('Edit Page');?>
+<script type="text/javascript">
+
+var CKEDITOR_BASEPATH = "<?php echo PUBLIC_PATH . "js/back_end/ckeditor/" ; ?>" ;
+
+</script>
+<div class="wrap columns-2">
+        
+    	
+          <h1><?php  echo $this->translate('Edit Page'); ?><button type = "button" onClick="window.location.href='<?php echo HTTP_PATH;?>admin/page<?php echo '#'.$this->qstring; ?>'" class="btn ml10" ><?php echo $this->translate('Cancel'); ?></button></h1>
+           
+           <form id="addPageform" name="addPageform" enctype="multipart/form-data" method="POST" action="<?php echo HTTP_PATH;?>admin/page/updatepage">
+           <input type="hidden" value="<?php echo $this->role; ?>" name='role' id='role' />
+           
+            <input type="hidden" name='qString' id='qString' value='<?php echo $this->qstring; ?>' />
+            <div class="metabox-holder has-right-sidebar" id="poststuff">
+              <div class="inner-sidebar" id="side-info-column">
+                <div class="meta-box-sortables ui-sortable" id="side-sortables">
+                  <div class="postbox " id="submitdiv">
+                                       
+                     <input type="hidden" name="savePagebtn" id="savePage" value="">
+                    
+                    <div class="sidebar-box-footer">
+                
+                    <button name="savePagebtn" onClick="$('#savePage').val('publish')" class="btn btn-primary fr" href="#" id="publishBtn"><?php echo $this->translate('Update'); ?></button><a class="fr m5" href="<?php echo HTTP_PATH;?>admin/page" id="publishcancelBtn"><?php echo $this->translate('Cancel'); ?></a>
+                   
+                    </div>
+                  </div>
+                  
+                 
+                </div>
+              </div>
+              <div id="post-body">
+              	<div id="post-body-content">
+              		<div class="mainpage-content">
+                    	<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Page title'); ?></strong></label></div>
+                            <div class="mainpage-content-right"><input type="text" value="<?php echo $this->pageDetail['pageTitle']; ?>" name="pageTitle" id="pageTitle" class="span3" placeholder="<?php echo $this->translate('Page title'); ?>"></div>
+                            <div class="mainpage-content-right" style="height : 20px;"></div>
+                        </div>
+                        
+                          <!-- <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Image'); ?></strong></label></div>
+                            <div class="mainpage-content-right">
+                            <?php 
+                            $pageImage = '';
+                            if($this->pageDetail['logoId']){
+                              
+                            	if(isset($this->pageDetail['logo']['name']) && $this->pageDetail['logo']['name']!=''){
+                            		
+                            		if(file_exists(ROOT_PATH.$this->pageDetail['logo']['path'].$this->pageDetail['logo']['name'])){
+                            			$pageImage = PUBLIC_PATH_LOCALE.$this->pageDetail['logo']['path'].'thum_'.$this->pageDetail['logo']['name'];
+                            			
+                            		}
+                            	}
+                            	?>
+                            <img src="<?php echo $pageImage;?>"  alt="pageLogo" align="top">
+                            <a  class="red" onclick="deleteImage(<?php echo $this->pageDetail['logo']['id']; ?>,<?php echo $this->pageDetail['id']; ?>)" href="javascript:void(0);" id="deleteButton"><strong>DELETE</strong></a>
+                            
+                            <?php }?>
+                            <input type="file" onchange="checkFileType(event)" class="ignore" name="logoFile" id="pageImage"><span><?php echo $this->translate('.jpg or .png file only (Size: 2MB, Ratio: 0.75)'); ?></span>
+                            </div>
+                              <div class="mainpage-content-right" id="imagerrorDiv" style="float:left;margin:-9px 0 6px 0; height : 20px; width : 511px;"></div> 
+                        </div>   -->
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Meta title'); ?></strong></label></div>
+                            <div class="mainpage-content-right"><input type="text" name="pagemetaTitle" id="pagemetaTitle" placeholder="<?php echo $this->translate('Meta title');?>" class="input-xlarge mbot bbot ignore" value="<?php echo $this->pageDetail['metaTitle']; ?>"/>
+
+                            </div>
+                        <div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Meta Description'); ?></strong></label></div>
+                            <div class="mainpage-content-right"><textarea class="input-xlarge mbot bbot ignore" id="pagemetaDesc" name="pagemetaDesc" placeholder="<?php echo $this->translate ( 'Meta Description' );?>" rows="3"><?php echo $this->pageDetail['metaDescription']; ?></textarea>
+							<!--<span id="metaDescLeft" class="nobel" style="width:504px;"></span>-->
+                            <!--<textarea class="input-xlarge mbot bbot ignore" name="pagemetaDesc" id="pagemetaDesc" placeholder="<?php //echo $this->translate('Meta Description'); ?>"  maxlength="150" rows="3"><?php //echo $this->pageDetail['metaDescription']; ?></textarea>
+                            <input type="text" class="input-xlarge disabled btop word-count"  id="metaTextLeft" value = "Characters Left: 160" placeholder="Word Count: 28" disabled="disabled">-->
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                   
+                <div id="mainpage-content">    
+                	<textarea rows="10" class="input-xlarge" name="pageDesc" id="pageDesc" placeholder="<?php echo $this->translate('Page Description'); ?>" rows="3"><?php echo $this->pageDetail['content']; ?></textarea>
+                </div>  
+                <br> 
+                  
+           
+                    
+                
+                 </div>                    
+                        
+                        
+                        
+                    </div>
+                </div>
+              </div>
+              <input type="hidden" name="pageId" id="pageId" value="<?php echo $this->pageId; ?>" >
+            </form>  
+              <br class="clear">
+</div>

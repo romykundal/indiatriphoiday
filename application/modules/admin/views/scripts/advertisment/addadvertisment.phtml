@@ -1,0 +1,65 @@
+<?php
+$this->headTitle()->append($this->translate('Add Advertisment'));
+
+{
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.dataTables.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/dataTableComman.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.ui.widget.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.iframe-transport.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-fp.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery.fileupload-ui.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/jquery.validate.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/advertismentList.js.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/back_end/bootbox.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "/js/jquery-ui-1.8.16.custom.min.js");
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "/css/jquery-ui-1.8.16.custom.css" );
+?>
+<!-- Div for add new user list  -->
+<div id='addNewregionDiv' class='wrap columns-2'>
+<form name="addRegions" id='addRegions' method='POST' action='<?php echo HTTP_PATH; ?>admin/advertisment/addadvertisment' enctype="multipart/form-data">
+	<h1><?php echo $this->translate('Add New Advertisment'); ?></h1>
+	
+	
+	<div id="post-body">
+       <div>
+         <div class="mainpage-content">
+				 
+					<div class="mainpage-content-line">
+                            <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Title'); ?></strong></label></div>
+                            <div class="mainpage-content-right control-group">
+                                <div class="mainpage-content-right-inner-right-other help-inline"></div>
+                                <div class="mainpage-content-right-inner-left-other">
+                                <input type="text"  maxlength="254" name="title" id="title" placeholder="<?php echo $this->translate('Title'); ?>" class="span3">
+                                </div>                        
+                            </div>
+                        </div>
+						
+		 
+				   
+              <div class="clear"></div>
+		         <div class="mainpage-content-line">
+                           <div class="mainpage-content-left"><label><strong><?php echo $this->translate('Upload Picture'); ?></strong></label></div>
+                           <div class="mainpage-content-right control-group upload">
+                                <div class="mainpage-content-right-inner-right-other upload">
+                                <span class="ml15 img-name" id="avtarNameNew" ></span>
+                                </div>
+                          		
+                           		 <div class="mainpage-content-right-inner-left-other">
+                           		 <input  data-max-size="2097152"  class="span3 ignore" type="file" onchange="checkFileType(event)" name="imageName">
+                               
+                             </div>                        
+                            </div>
+                        </div>
+                        
+            <div class="mainpage-content-colorbox">
+            	<button id='saveAdvertisment'  type="submit" class="btn btn-large btn-primary fl" ><?php echo $this->translate('ADD Advertisment'); ?></button>
+				<a href="<?php echo HTTP_PATH; ?>admin/advertisment"  class="fl m10"><strong><?php echo $this->translate('CANCEL'); ?></strong></a>
+           
+            </div>
+            </form>
+                        	</div>
+            <!-- /poststuff -->
+        
+ <?php }?>
+ 

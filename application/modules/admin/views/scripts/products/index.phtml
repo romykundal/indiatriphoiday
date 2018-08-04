@@ -1,0 +1,76 @@
+<?php
+$this->headTitle()->append($this->translate('Products'));
+
+$this->headScript()->appendFile(PUBLIC_PATH . "js/jquery.dataTables.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/dataTableComman.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/jquery.ui.widget.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/jquery.iframe-transport.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/jquery.fileupload.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/jquery.fileupload-fp.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/jquery.fileupload-ui.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/back_end/jquery.validate.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/common.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/back_end/productsList.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/back_end/bootbox.min.js");
+$this->headScript()->appendFile(PUBLIC_PATH . "js/jquery-ui-1.8.16.custom.min.js");
+$this->headLink ()->appendStylesheet ( PUBLIC_PATH . "css/jquery-ui-1.8.16.custom.css" );
+?>
+
+ <style>
+
+div.dataTables_wrapper table tbody tr td
+	{
+	padding-bottom: 15px; 
+	}
+	
+div#wordsListTable_filter
+{
+	display : none;
+}
+img#prod_img{
+	border-radius: 15px; 
+}
+</style>
+<!-- Div for user list  -->
+
+<div class='wrap columns-2' id='regionListDiv'>
+<?php if($this->messageSuccess!='' || $this->messageError!='' ){?>
+<br><div class ="mainpage-content-colorbox success" id="removemsg">
+<?php if($this->messageSuccess!=''){?>
+<span class="successserver"><?php echo $this->messageSuccess; ?></span>
+<?php }?>
+<?php if($this->messageError!=''){?>
+<span class="errorserver"><?php echo $this->messageError; ?></span>
+<?php } ?>
+</div>
+<?php }?>
+<h1 class="fl"><?php echo $this->translate('Manage products');?></h1>
+
+	<input type="button"  onClick="window.location.href='<?php echo HTTP_PATH; ?>admin/products/addproduct'" Value='<?php echo $this->translate('Add New product'); ?>'  name='addNew'  class="btn ml10" style="margin-bottom: -39px;" />
+          	<div class="clear"></div>
+          
+          <div class="mainpage-content-colorbox">
+                
+                <form class="form-search" name="searchForm" onsubmit="return false;">
+			      <div class="fl">                   
+                         <input type="text" id='searchProduct' name='searchProduct' placeholder="Search product" class="span5">
+                        <button onclick="javascript:getwordsList(searchProduct.value)" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+            
+            </div>  
+            
+		<table id="productListTable" class="table table-bordered table-striped">
+			<thead>
+	            <tr>
+	            	<th ><?php echo $this->translate('Product Image'); ?></th>
+	                <th ><?php echo $this->translate('Title'); ?></th>
+	                <th ><?php echo $this->translate('Category'); ?></th>
+	                <th ><?php echo $this->translate('Price'); ?></th>
+	                <th><?php echo $this->translate('Edit');?></th>
+	                <th><?php echo $this->translate('Delete'); ?></th>
+	            </tr>
+	        </thead>
+	    </table>
+</div><!-- End code of list users -->
+

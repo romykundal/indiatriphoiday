@@ -1,0 +1,150 @@
+<style type="text/css" media="screen">
+.table .thead-dark th{
+    color: #fff;
+    background-color: #212529;
+    border-color: #32383e;
+}
+</style>
+
+<!-- <div id="content-body">
+	<div class="category">
+    	
+     	
+    <h1 style="margin-left: 80px;">       
+       <strong style="font-weight: bold;"><?php //echo ucfirst($this->heading); ?> </strong>
+    </h1> 
+    </div>
+    <div class="clear"></div>
+</div>
+ -->
+        <!-- Start Main Content -->
+        <div class="main-content">
+        <div class="container">
+        <div class="row">
+        <div class="col-md-8">
+
+<div class="row">
+<?php
+    /*echo "<pre>";
+    print_r($this->order);
+    echo "</pre>";*/
+    //die;
+?>
+         <div class="error-msg">
+                <?php echo $this->message; ?>
+            </div>
+
+  <table cellpadding="5" cellspacing="0" border="0" class="table table-hover table-condensed">
+    <tbody>
+    <tr>
+        <td style="width:100px">From:</td>
+        <td><?php echo $this->order["departure"] ?></td>
+    </tr>
+    <tr>
+        <td>To:</td>
+        <td><?php echo $this->order["arrival"] ?></td>
+    </tr>
+    <tr>
+        <td>Departure Date:</td>
+        <td><?php echo $this->order["departureDate"] ?></td>
+    </tr>
+    <tr>
+        <td>Return Date:</td>
+        <td><?php echo $this->order["returnDate"] ?></td>
+    </tr>
+     <tr>
+        <td>Surcharges:</td>
+        <td><?php echo $this->order["baseFare"] ?></td>
+    </tr>
+    <tr>
+        <td>Discount:</td>
+        <td><?php echo $this->order["surcharges"] ?></td>
+    </tr>
+    <tr>
+        <td>Discount:</td>
+        <td><?php echo $this->order["discount"] ?></td>
+    </tr>
+     <tr>
+        <td>Base Fare:</td>
+        <td><?php echo $this->order["grandTotal"] ?></td>
+    </tr>
+    <tr>
+        <td>Travel Type:</td>
+        <td><?php echo $this->order["travelType"] ?></td>
+    </tr>
+    <tr>
+        <td>Totel Travellers:</td>
+        <td>
+            <strong>Adult</strong> <?php echo $this->order["adult"] ?>
+            <strong>Children</strong> <?php echo $this->order["child"] ?>
+            <strong>Infant</strong> <?php echo $this->order["infant"] ?>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Booking Status:</td>
+        <td><?php echo $this->order["status"] ?></td>
+    </tr>
+    
+    <!-- <tr>
+        <td>Action:</td>
+        <td>
+        <button class="btn btn-xs">Open case</button> <button class="btn btn-xs btn-danger pull-right" style="margin-left:5px">Delete Record</button> <button class="btn btn-xs btn-success pull-right">Save Changes</button> 
+        </td>
+    </tr> -->
+    </tbody>
+  </table>
+                          
+</div>
+
+
+        </div>
+        
+        <div class="col-md-4">
+        <div class="sidebar">
+        <div class="widget">    
+        <h3 class="sidebar-title">My Account</h3>      
+        <div id="nt-container">
+        
+        <ul id="accountul">
+            <li>
+                <a href="<?php echo HTTP_PATH.'userprofile/orders' ; ?>">
+                <div class="news-item">
+                    <div class="news-text">
+                        <h4>My Orders</h4>
+                    </div>
+                </div><!-- News Item -->
+            </a>
+            </li>
+
+            <li>
+                <a href="<?php echo HTTP_PATH.'userprofile/profilesetting' ; ?>">
+                <div class="news-item">
+                    <div class="news-text">
+                        <h4>My Account info</h4>
+                    </div>
+                </div><!-- News Item -->
+            </a>
+            </li>
+            
+            <li>
+                <a href="<?php echo HTTP_PATH.'user/logout' ; ?>">
+                <div class="news-item">
+                    <div class="news-text">
+                        <h4>Logout</h4>
+                    </div>
+                </div><!-- News Item -->
+            </a>
+            </li>
+            
+        </ul>
+       
+    </div>
+    </div>
+
+    </div><!-- .sidebar -->
+    </div><!-- .col-sm-4 -->
+
+    </div>
+    </div>
+    </div>

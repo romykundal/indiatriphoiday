@@ -1,0 +1,143 @@
+<style>
+
+.register-form-row input{
+ background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+
+.register-form .blue_btn button{
+/*background: url("<?php echo PUBLIC_PATH; ?>/images/front_end/blue-btn_bg.jpg") repeat-x scroll left top transparent;*/
+    border-radius: 5px 5px 5px 5px;
+    clear: both;
+    color: #FFFFFF;
+    font-size: 15px;
+    height: 46px;
+    margin: 15px 0 0 0;
+    text-align: center;
+    width: 200px;
+    float: right;
+}
+
+</style>
+
+<script type="text/javascript">
+<!--
+
+function checkRegister(){
+
+	$("form#register").submit();
+}
+
+//-->
+</script>
+
+
+ <div class="main-content">
+        <div class="container">
+        <div class="row">
+        <div class="col-md-8">
+<div class="error-msg">
+                <?php echo $this->message; ?>
+            </div>
+
+       <form autocomplete="off" validate action="" method="POST" id="register" name="register"> 
+        <div class="register-form">
+       		
+
+<div class="form-group">
+    <label for="firstName">First Name</label>
+    <input required type="text" class="form-control" id="firstName" name="firstName" aria-describedby="firstNameHelp" placeholder="Enter First Name">
+</div>
+
+<div class="form-group">
+    <label for="firstName">Last Name</label>
+    <input required type="text" class="form-control" id="lastName" name="lastName" aria-describedby="lastNameHelp" placeholder="Enter Last Name">
+</div>
+
+ <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input required type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input required type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+  </div>
+
+
+<div class="form-group">
+    <label for="phonenumber">Phone number</label>
+        <input required type="number" class="form-control" id="phonenumber" name="phonenumber" aria-describedby="phonenumberHelp" placeholder="Enter phonenumber">
+    <small id="phonenumberHelp" class="form-text text-muted">Only contain the 10 digits 0123456789
+.</small>
+</div>
+
+<div class="form-group">
+    <label for="zipcode">Pin/Zip Code</label>
+       <input required type="number" class="form-control" id="zipcode" name="zipcode" aria-describedby="zipcodeHelp" placeholder="Enter zipcode">
+    <small id="zipcodeHelp" class="form-text text-muted">Only contain the 6 digits 160017
+.</small>
+</div>
+
+<div class="form-group">
+    <label for="address">Address</label>
+    <textarea class="form-control" id="address" name="address" rows="5"></textarea>
+</div>
+<div class="form-group">
+    <div class="form-check"> 
+      <label class="form-check-label" for="gridCheck">
+        By signing up, you agree to the <a target="_blank" class="active" href="<?php echo HTTP_PATH.'page/tearmsandcondition' ; ?>">terms and conditions</a>
+      </label>
+    </div>
+  </div>
+
+            <div class="clr"></div>
+            <div class="form-group">
+            <div class="blue_btn" id="changeWhenLogin">
+            <input  type="hidden" value="2" id="roleId" name="roleId">
+                <button type="submit" class="btn btn-primary">SIGN UP</button>
+            	<!-- <a onclick="checkRegister();" tabindex="3" href="javascript:void(0);">Sign In</a> -->
+            </div>
+            </div>
+       <div class="clr"></div>
+       </div> 
+       </form>
+       
+</div>
+
+
+        <div class="col-md-4">
+        <div class="sidebar">
+        <div class="widget">    
+        <h3 class="sidebar-title">Latest Stories</h3>      
+        <div id="nt-container">
+        
+      <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=218632621666228" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+       
+    </div>
+    </div><!-- .widget -->
+    <div class="widget">
+        <h3 class="sidebar-title">Book Now</h3>
+
+        <div class="single-product">
+        <img src="<?php echo PUBLIC_PATH; ?>/images/front_end/c5.jpg" />
+            <div class="icon">
+
+            </div>
+            <div class="desc">
+                <h4>Chandigarh-New Delhi</h4>
+                <p>Best fares for New Delhi </p>
+                <h5> Rs.6,822<span><a href="#" class="primary-btn d-inline-flex align-items-center">BOOK NOW</a></span></h5>
+            </div>
+            </div>
+        </div><!-- .widget -->
+    </div><!-- .sidebar -->
+    </div><!-- .col-sm-4 -->
+
+   </div>
+        </div>
+            </div>
+

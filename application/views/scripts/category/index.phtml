@@ -1,0 +1,38 @@
+<div id="content-body">
+	<div class="category">
+    	<h1>Product Categories</h1> 
+     	<div class="category_list">
+     	<?php 
+     	
+     	foreach($this->category as $cat):
+	     	
+     	if(count($cat['images'])>0){
+
+     		if(isset($cat['images']['type']) && $cat['images']['type']=='IMGCAT' && isset($cat['images']['name']) && $cat['images']['name']!='')
+	     	{
+	     		if(file_exists(ROOT_PATH.$cat['images']['path']."thum_".$cat['images']['name']))
+	     		{
+	     			$image = $cat['images']['path']."thum_".$cat['images']['name'];
+	     	
+	     		}else{
+	     			$image = 'images/upload/no_image.png' ;
+	     		}
+	     	}
+	     	
+     	}	else{
+	     			$image = 'images/no_image.png' ;
+	     		}
+	     	$link = HTTP_PATH.'products/index/id/'.$cat['id'];
+     	?>
+     		<a href="<?php echo $link; ?>" class="image-description-outer ">
+	 			<span class="image-description-img"><img alt="" src="<?php echo PUBLIC_PATH.$image; ?>"></span>
+	 			<span class="image-description-text"><?php echo $cat['name']; ?></span>
+	 		</a>
+	 	<?php 
+	 	endforeach;
+	 	?>
+      	</div>
+     
+    </div>
+	<div class="clear"></div>
+</div>

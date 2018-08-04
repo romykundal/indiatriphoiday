@@ -1,0 +1,20 @@
+<?php echo $this->render('_header.phtml'); ?>
+
+<?php if( $this->controller == "index" && $this->action == "index" ){ ?>
+
+
+<?php echo $this->render('_banner.phtml'); ?>
+
+<?php } else {  ?>
+
+<?php echo $this->render('_banner2.phtml'); ?>
+
+<?php } ?>
+
+<?php echo $this->layout()->content; ?>
+
+
+
+<?php echo $this->render('_footer.phtml'); ?>
+
+

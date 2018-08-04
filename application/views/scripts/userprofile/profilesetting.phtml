@@ -1,0 +1,141 @@
+<!-- <div id="content-body">
+    <div class="category">
+        
+        
+    <h1 style="margin-left: 80px;">       
+       <strong style="font-weight: bold;"><?php //echo ucfirst($this->heading); ?> </strong>
+    </h1> 
+    </div>
+    <div class="clear"></div>
+</div> -->
+<div class='wrap columns-2' id='profile'>
+    <?php if($this->messageSuccess!='' || $this->messageError!='' ){?>
+    <br>
+    <?php if($this->messageSuccess!=''){?>
+    <div class ="alert alert-success success"><?php echo $this->messageSuccess; ?></div>
+    <?php }?>
+    <?php if($this->messageError!=''){?>
+    <div class ="alert alert-danger success"><?php echo $this->messageError; ?> </div>
+    <?php } ?>
+   
+    <?php 
+    }?> 
+</div>   
+        <!-- Start Main Content -->
+        <div class="main-content">
+        <div class="container">
+        <div class="row">
+        <div class="col-md-8">
+
+<div class="row">
+
+<?php
+ /*   echo "<pre>";
+    print_r($this->user);
+    echo "</pre>";*/
+    
+?>
+
+<form autocomplete="off" validate action="" method="POST" id="profile" name="profile"> 
+   <div class="register-form">
+            
+
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input required type="text" value="<?php echo $this->user["firstName"]; ?>" class="form-control" id="firstName" name="firstName" aria-describedby="firstNameHelp" placeholder="Enter First Name">
+        </div>
+
+        <div class="form-group">
+            <label for="firstName">Last Name</label>
+            <input required type="text" value="<?php echo $this->user["lastName"]; ?>" class="form-control" id="lastName" name="lastName" aria-describedby="lastNameHelp" placeholder="Enter Last Name">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input required type="email" value="<?php echo $this->user["email"]; ?>" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" value="<?php echo $this->user["firstName"]; ?>" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="phonenumber">Phone number</label>
+                <input required type="number" value="<?php echo $this->user["phonenumber"]; ?>" class="form-control" id="phonenumber" name="phonenumber" aria-describedby="phonenumberHelp" placeholder="Enter phonenumber">
+            <small id="phonenumberHelp" class="form-text text-muted">Only contain the 10 digits 0123456789
+        .</small>
+        </div>
+
+        <div class="form-group">
+            <label for="zipcode">Pin/Zip Code/</label>
+               <input required type="number" value="<?php echo $this->user["zipcode"]; ?>" class="form-control" id="zipcode" name="zipcode" aria-describedby="zipcodeHelp" placeholder="Enter zipcode">
+            <small id="zipcodeHelp" class="form-text text-muted">Only contain the 6 digits 160017
+        .</small>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea class="form-control" id="address" name="address" rows="5"><?php echo $this->user["address"]; ?></textarea>
+        </div>
+
+            <div class="clr"></div>
+            <div class="form-group">
+            <div class="blue_btn" id="changeWhenLogin">
+            <input  type="hidden" value="<?php echo $this->user["id"]; ?>" id="id" name="id" >
+                <button type="submit" class="btn btn-primary">Update</button>
+                <!-- <a onclick="checkRegister();" tabindex="3" href="javascript:void(0);">Sign In</a> -->
+            </div>
+            </div>
+       <div class="clr"></div>
+    </div> 
+</form> 
+</div>
+
+
+        </div>
+        
+        <div class="col-md-4">
+        <div class="sidebar">
+        <div class="widget">    
+        <h3 class="sidebar-title">My Account</h3>      
+        <div id="nt-container">
+        
+        <ul id="accountul">
+            <li>
+                <a href="<?php echo HTTP_PATH.'userprofile/orders' ; ?>">
+                <div class="news-item">
+                    <div class="news-text">
+                        <h4>My Orders</h4>
+                    </div>
+                </div><!-- News Item -->
+            </a>
+            </li>
+
+            <li>
+                <a href="<?php echo HTTP_PATH.'userprofile/profilesetting' ; ?>">
+                <div class="news-item">
+                    <div class="news-text">
+                        <h4>My Account info</h4>
+                    </div>
+                </div><!-- News Item -->
+            </a>
+            </li>
+
+            <li>
+                <a href="<?php echo HTTP_PATH.'user/logout' ; ?>">
+                <div class="news-item">
+                    <div class="news-text">
+                        <h4>Logout</h4>
+                    </div>
+                </div><!-- News Item -->
+            </a>
+            </li>
+            
+        </ul>
+       
+    </div>
+    </div>
+
+    </div><!-- .sidebar -->
+    </div><!-- .col-sm-4 -->
+
+    </div>
+    </div>
+    </div>
