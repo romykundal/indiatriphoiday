@@ -206,14 +206,14 @@ var focusRules = {
 							},*/
 							{
 							"fnRender" : function(obj) {
-								return depDate  = obj.aData.departureDate +' '+ obj.aData.departureTime ;
+								return depDate  = obj.aData.departureDate ;
 					
 							},
 							"bSortable" : false		
 							},
 							{
 							"fnRender" : function(obj) {
-								return returnDate  = obj.aData.returnDate +' '+ obj.aData.returnTime;
+								return returnDate  = obj.aData.returnDate;
 								},
 								"bSortable" : false		
 							},

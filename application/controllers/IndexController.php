@@ -178,15 +178,27 @@ die;*/
 print_r($params);
 echo "</pre>";
 die;*/
+		// $to = "romykundal@gmail.com";
+		$to =  "info@indiatripholiday.com";
+    	$frm = $params["email"];
+    		$mail = new Zend_Mail();
+
+			$mail->setBodyHtml("New order, <br> Your new order / Inquiry as below:<br><br> Customer Email is : ".$params["email"]."<br> Customer Phone no is : ".$params["phone"]."<br><br> <a href='".HTTP_PATH."/admin/' >Click here</a> to find more detail in your admin panel under order management sidebar link.  <br><br>Thank You,<br>".$params["email"]."<br>".$params["phone"]."");
+			// $mail->setBodyHtml("DEAR romy,<br> Your new order");
+			$mail->setFrom($frm, 'indiatripholiday(indiatripholiday.com)');
+			$mail->addTo($to, "Romy");
+			$mail->setSubject('Your new Order');
+			$mail->send();
+    	
     	$InquiriesObj = new Inquiries();
     	$InquiriesObj->saveInquiry($params); 		
-    	
+    	    	
 
 	    	$flash = $this->_helper->getHelper('FlashMessenger');
 	    	$message = $this->view->translate('You has been request submitted successfully. Agent will contect via phone call or email about your booking');
 	    	$flash->addMessage(array('success' => $message ));
-	    	//$this->_redirect(HTTP_PATH.'index/booknow');
-	    	$this->_redirect('https://www.instamojo.com/@sarthee22');
+	    	$this->_redirect(HTTP_PATH.'index/booknow');
+	    	// $this->_redirect('https://www.instamojo.com/@sarthee22');
 	    	exit;
     }
 	

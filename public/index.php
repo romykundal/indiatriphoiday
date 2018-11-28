@@ -16,12 +16,12 @@ defined('APPLICATION_ENV')
 				(getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV')
 						: 'production'));
 
-define("HTTP_PATH", 'http://' . $_SERVER['HTTP_HOST'] . '/');
+define("HTTP_PATH", 'https://' . $_SERVER['HTTP_HOST'] . '/');
 
 //PUBLIC PATH
 defined('PUBLIC_PATH')
 		|| define('PUBLIC_PATH',
-			'http://' . $_SERVER['HTTP_HOST']
+			'https://' . $_SERVER['HTTP_HOST']
 			. dirname($_SERVER['SCRIPT_NAME']) . '/');
 
 //define root path

@@ -2,8 +2,8 @@ var filter = "";
 
 
 
-var HOST_PATH_PUBLIC = 'http://' + window.location.host + '/public';
-var HOST_PATH = 'http://' + window.location.host + '/';
+var HOST_PATH_PUBLIC = 'https://' + window.location.host + '/public';
+var HOST_PATH = 'https://' + window.location.host + '/';
 
 //var userList = $('#userList').dataTable();
 //var trashUserList = $('#trashUserList').dataTable();

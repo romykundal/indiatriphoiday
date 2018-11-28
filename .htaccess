@@ -1,4 +1,8 @@
 RewriteEngine On
 
-        RewriteRule ^.*$ public/index.php [NC,L]
+RewriteCond %{SERVER_PORT} 80 
+RewriteRule ^(.*)$ https://indiatripholiday.com/$1 [R,L]
 
+
+RewriteRule ^(includes/|submit\.php) - [F,L,NC]
+RewriteRule ^.*$ public/index.php [NC,L]
